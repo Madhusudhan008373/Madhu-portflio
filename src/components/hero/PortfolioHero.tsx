@@ -1,4 +1,7 @@
+"use client";
+
 import { ArrowUpRight, Quote } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -144,20 +147,34 @@ function Portrait() {
 }
 
 function WhitePanel() {
+  const { scrollY } = useScroll();
+
+  // Scroll-triggered dynamic parallax:
+  // As user scrolls down, the circuit drifts outward to the right away from the portrait photo
+  // and smoothly translates back inward when scrolling back up.
+  const circuitX = useTransform(scrollY, [0, 600], [0, 75]);
+  const circuitScale = useTransform(scrollY, [0, 600], [1.1, 1.16]);
+  const circuitOpacity = useTransform(scrollY, [0, 350, 700], [0.22, 0.25, 0.08]);
+
   return (
     <section className="relative flex flex-col overflow-hidden rounded-t-[3rem] bg-background px-6 pb-8 pt-16 sm:px-10 lg:mt-4 lg:h-[calc(100dvh-1rem)] lg:w-[45%] lg:rounded-tl-[3rem] lg:rounded-tr-none lg:px-12 lg:pb-16 lg:pt-28 xl:px-16">
-      {/* Circuit Graphic (Soft, shaded technical watermark blended into the white space) */}
-      <div
+      {/* Circuit Graphic with Smooth Scroll-Parallax Outward Translation */}
+      <motion.div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 z-0 flex items-center justify-start overflow-hidden select-none"
+        style={{
+          x: circuitX,
+          scale: circuitScale,
+          opacity: circuitOpacity,
+        }}
+        className="pointer-events-none absolute inset-0 z-0 flex items-center justify-start overflow-hidden select-none will-change-transform"
       >
         <img
           src={circuitGraphic}
           alt=""
           loading="eager"
-          className="h-full w-full object-contain object-left-center opacity-20 contrast-[0.88] mix-blend-multiply transition-opacity duration-500 scale-110 -translate-x-6 lg:-translate-x-10"
+          className="h-full w-full object-contain object-left-center contrast-[0.88] mix-blend-multiply -translate-x-6 lg:-translate-x-10"
         />
-      </div>
+      </motion.div>
 
       <div className="relative z-20 flex flex-1 flex-col justify-center pb-16 lg:items-end lg:pb-0"></div>
 
