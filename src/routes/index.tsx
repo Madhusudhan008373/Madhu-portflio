@@ -5,16 +5,16 @@ import { PortfolioHero } from "@/components/hero/PortfolioHero";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Aria Vance — UI/UX & Product Designer Portfolio" },
+      { title: "Madhusudhan — UI/UX Designer Portfolio" },
       {
         name: "description",
         content:
-          "Aria Vance designs calm, purposeful digital products for ambitious brands. Available for new projects.",
+          "Madhusudhan designs digital experiences that inspire and connect. Available for freelance projects.",
       },
-      { property: "og:title", content: "Aria Vance — UI/UX & Product Designer Portfolio" },
+      { property: "og:title", content: "Madhusudhan — UI/UX Designer Portfolio" },
       {
         property: "og:description",
-        content: "Calm, purposeful digital products for ambitious brands.",
+        content: "Designs that inspire. Ideas that connect.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

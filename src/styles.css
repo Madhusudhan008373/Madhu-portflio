@@ -32,7 +32,7 @@
 @theme inline {
   --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Bricolage Grotesque", "Manrope", sans-serif;
-  --font-serif: "Instrument Serif", Georgia, serif;
+  --font-poster: "Anton", "Bricolage Grotesque", sans-serif;
   --color-ember: var(--ember);
   --color-ember-deep: var(--ember-deep);
   --color-hero-foreground: var(--hero-foreground);
@@ -121,7 +121,7 @@
   --ember-deep: oklch(0.2 0.05 40);
   --hero-foreground: oklch(0.985 0.012 75);
   --available: oklch(0.72 0.17 150);
-  --gradient-ember: linear-gradient(150deg, var(--ember) 0%, oklch(0.55 0.18 40) 38%, oklch(0.32 0.1 38) 72%, var(--ember-deep) 100%);
+  --gradient-ember: radial-gradient(120% 90% at 55% 55%, var(--ember) 0%, oklch(0.58 0.19 42) 35%, oklch(0.36 0.12 38) 70%, var(--ember-deep) 100%);
   --shadow-glow: 0 18px 40px -12px color-mix(in oklab, var(--ember-deep) 70%, transparent);
   --shadow-card: 0 30px 60px -30px color-mix(in oklab, var(--foreground) 35%, transparent), 0 2px 6px -2px color-mix(in oklab, var(--foreground) 8%, transparent);
 }
@@ -195,6 +195,15 @@
 @utility orb-glow {
   background: radial-gradient(circle, color-mix(in oklab, var(--ember) 80%, transparent), transparent 65%);
   filter: blur(40px);
+}
+
+@utility portrait-glow {
+  background: radial-gradient(closest-side, color-mix(in oklab, var(--ember) 55%, transparent), transparent);
+  filter: blur(30px);
+}
+
+@utility portrait-shadow {
+  filter: drop-shadow(0 20px 40px color-mix(in oklab, var(--ember) 25%, transparent));
 }
 
 @utility animate-float {

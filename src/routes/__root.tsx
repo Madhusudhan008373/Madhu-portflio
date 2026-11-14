@@ -81,10 +81,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Aria Vance — UI/UX Designer" },
-      { name: "description", content: "Portfolio of Aria Vance, a product and UI/UX designer." },
-      { property: "og:title", content: "Aria Vance — UI/UX Designer" },
-      { property: "og:description", content: "Portfolio of Aria Vance, a product and UI/UX designer." },
+      { title: "Madhusudhan — UI/UX Designer" },
+      { name: "description", content: "Portfolio of Madhusudhan, a UI/UX designer." },
+      { property: "og:title", content: "Madhusudhan — UI/UX Designer" },
+      { property: "og:description", content: "Portfolio of Madhusudhan, a UI/UX designer." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -98,7 +98,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Anton&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Manrope:wght@400;500;600;700&display=swap",
       },
     ],
   }),
