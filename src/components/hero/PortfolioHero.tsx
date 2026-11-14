@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { ArrowUpRight, Quote } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -9,6 +8,7 @@ import client3 from "@/assets/client-3.jpg";
 import client4 from "@/assets/client-4.jpg";
 import portrait from "@/assets/portrait.webp";
 import circuitGraphic from "@/assets/circuit.png";
+import { FilamentMenu } from "./FilamentMenu";
 
 /*
  * Spacing follows an 8-point grid: only Tailwind steps that resolve to multiples of 8px
@@ -17,47 +17,6 @@ import circuitGraphic from "@/assets/circuit.png";
 
 const navItems = ["About", "Education", "Skills", "Strengths", "Contact"];
 const clients = [client2, client1, client4, client3];
-
-function MenuButton({
-  onClick,
-  open,
-  className = "",
-}: {
-  onClick?: () => void;
-  open?: boolean;
-  className?: string;
-}) {
-  return (
-    <Button
-      variant="menu"
-      size="circle"
-      aria-label={open ? "Close menu" : "Open menu"}
-      onClick={onClick}
-      className={cn("lg:hidden", className)}
-    >
-      <span className="flex flex-col gap-1">
-        <span
-          className={cn(
-            "block h-0.5 w-6 rounded-full bg-current transition-transform duration-300",
-            open && "translate-y-1.5 rotate-45",
-          )}
-        />
-        <span
-          className={cn(
-            "block h-0.5 w-6 rounded-full bg-current transition-opacity duration-300",
-            open && "opacity-0",
-          )}
-        />
-        <span
-          className={cn(
-            "block h-0.5 w-6 rounded-full bg-current transition-transform duration-300",
-            open && "-translate-y-1.5 -rotate-45",
-          )}
-        />
-      </span>
-    </Button>
-  );
-}
 
 function Logo() {
   return (
@@ -75,17 +34,15 @@ function Logo() {
 
 /** Non-sticky navigation at top of hero — scrolls away naturally with the page content */
 function SiteNav() {
-  const [mobileOpen, setMobileOpen] = useState(false);
-
   return (
     <header className="absolute inset-x-0 top-0 z-30 bg-transparent">
       <div className="flex h-24 items-center justify-between lg:h-auto lg:items-stretch">
         <div className="flex items-center px-6 sm:px-10 lg:h-24 lg:w-[55%] lg:px-16 xl:px-20">
           <Logo />
         </div>
-        <div className="flex items-center justify-end gap-8 px-6 sm:px-10 lg:mt-4 lg:h-24 lg:w-[45%] lg:px-12 xl:gap-12 xl:px-16">
+        <div className="flex items-center justify-end gap-6 sm:gap-8 px-6 sm:px-10 lg:mt-4 lg:h-24 lg:w-[45%] lg:px-12 xl:gap-8 xl:px-16">
           <nav aria-label="Primary" className="hidden lg:block">
-            <ul className="flex items-center gap-6 xl:gap-10">
+            <ul className="flex items-center gap-6 xl:gap-8">
               {navItems.map((item) => (
                 <li key={item}>
                   <a
@@ -99,38 +56,11 @@ function SiteNav() {
               ))}
             </ul>
           </nav>
-          <MenuButton onClick={() => setMobileOpen(!mobileOpen)} open={mobileOpen} />
+
+          {/* Glowing 3-Line Incandescent Filament Bulb Menu */}
+          <FilamentMenu />
         </div>
       </div>
-
-      {/* Mobile Menu Dropdown */}
-      {mobileOpen && (
-        <div className="border-b border-ember/20 bg-[oklch(0.09_0.025_40)]/98 px-6 py-6 shadow-2xl backdrop-blur-xl lg:hidden animate-in fade-in slide-in-from-top-4 duration-200">
-          <nav aria-label="Mobile Navigation" className="flex flex-col gap-2">
-            {navItems.map((item) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                onClick={() => setMobileOpen(false)}
-                className="rounded-xl px-4 py-3 text-sm font-semibold uppercase tracking-wider text-slate-200 hover:bg-ember/10 hover:text-ember transition-colors"
-              >
-                {item}
-              </a>
-            ))}
-          </nav>
-          <div className="mt-4 border-t border-ember/15 pt-4 flex flex-col gap-2 text-xs text-slate-400">
-            <a href="tel:6302657026" className="font-semibold text-slate-200 hover:text-ember">
-              📞 +91 6302657026
-            </a>
-            <a
-              href="mailto:chitadamadhusudhan@gmail.com"
-              className="font-semibold text-slate-200 hover:text-ember"
-            >
-              ✉️ chitadamadhusudhan@gmail.com
-            </a>
-          </div>
-        </div>
-      )}
     </header>
   );
 }
