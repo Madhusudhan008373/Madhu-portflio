@@ -10,10 +10,6 @@ export default defineConfig({
     tsConfigPaths({ projects: ["./tsconfig.json"] }),
     tanstackStart({
       server: { entry: "server" },
-      // Target Vercel's serverless functions output
-      nitro: {
-        preset: "vercel",
-      },
     }),
     react(),
   ],
