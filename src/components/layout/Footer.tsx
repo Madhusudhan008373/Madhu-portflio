@@ -126,13 +126,6 @@ export function Footer() {
             © {new Date().getFullYear()} CH Madhusudhan. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
-            <span className="flex items-center gap-2 text-ember font-medium">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-ember opacity-75" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-ember" />
-              </span>
-              Available for Internships &amp; Practical Training
-            </span>
             <a
               href="/#about"
               className="inline-flex items-center gap-1 text-[oklch(0.55_0.015_45)] hover:text-ember transition-colors"

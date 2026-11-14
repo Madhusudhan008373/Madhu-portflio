@@ -1,17 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import {
-  ShieldCheck,
-  Zap,
-  Cpu,
-  Cog,
-  CheckCircle2,
-  ArrowRight,
-  ArrowLeft,
-  Sparkles,
-  Sliders,
-  Layers,
-  Activity,
-} from "lucide-react";
+import { ShieldCheck, Zap, Cpu, Cog, CheckCircle2, ArrowRight } from "lucide-react";
 import { PageLayout } from "@/components/layout/PageLayout";
 import { Button } from "@/components/ui/button";
 
@@ -66,9 +54,9 @@ const skillsData = [
       "Grasp of fundamental electromechanical concepts governing AC and DC electric motors, including stator and rotor construction, magnetic field interactions, basic starters, and terminal wiring.",
     keyPoints: [
       "Operating principles of AC induction motors and DC motors",
-      "Stator, rotor, commutator, and winding fundamentals",
-      "Understanding motor starting methods and connection diagrams",
-      "Basic observation of motor parameters, torque, and speed characteristics",
+      "Stator, rotor, commutator, and field winding fundamentals",
+      "Motor starting methods, terminal connections & wiring diagrams",
+      "Observation of motor torque, speed, and loading characteristics",
     ],
     tags: ["AC & DC Motors", "Electromagnetism", "Stator & Rotor", "Motor Wiring"],
   },
@@ -81,10 +69,10 @@ const skillsData = [
     description:
       "Understanding the role and architecture of Programmable Logic Controllers (PLC) in industrial automation, including input/output interfacing, relay replacement, and ladder logic concepts.",
     keyPoints: [
-      "Architecture of Programmable Logic Controllers (CPU, I/O modules)",
-      "Basic concepts of ladder logic diagrams and relay logic conversion",
-      "Digital input and output signal interfacing for sensors and actuators",
-      "Appreciation of automation sequencing in industrial manufacturing lines",
+      "Architecture of Programmable Logic Controllers (CPU & I/O)",
+      "Basic concepts of ladder logic diagrams & relay conversions",
+      "Digital I/O interfacing for sensors, pushbuttons & contactors",
+      "Automation sequencing in industrial production lines",
     ],
     tags: ["Industrial Automation", "Ladder Logic", "I/O Interfacing", "Control Circuits"],
   },
@@ -95,66 +83,54 @@ function SkillsPage() {
     <PageLayout
       badge="Core Competencies"
       title="Technical Skills"
-      subtitle="Foundational engineering capabilities centered on industrial electrical safety, electromechanical machines, and automation controllers."
+      subtitle="Practical capabilities across industrial electrical safety, electromechanical machines, and programmable automation controllers."
     >
       <div className="space-y-12">
-        {/* Skills Cards Grid */}
+        {/* 3 Skill Cards Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {skillsData.map((skill, index) => {
+          {skillsData.map((skill) => {
             const Icon = skill.icon;
             return (
               <div
                 key={skill.id}
-                className="group relative flex flex-col justify-between rounded-3xl border border-slate-800 bg-[#0a0f1c]/80 p-8 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-500/40 hover:bg-[#0c1424] hover:shadow-[0_20px_45px_rgba(6,182,212,0.15)]"
+                className="group relative flex flex-col justify-between rounded-3xl border border-ember/15 bg-section-card p-8 transition-all duration-300 hover:-translate-y-1 hover:border-ember/35 hover:shadow-[0_20px_45px_oklch(0.69_0.21_45_/_0.12)]"
               >
-                {/* Top glow on hover */}
-                <div className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-
-                <div>
-                  {/* Category & Icon */}
+                <div className="relative">
                   <div className="flex items-center justify-between mb-6">
-                    <span className="rounded-full bg-slate-900 border border-slate-800 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-cyan-400">
+                    <span className="rounded-full bg-ember/8 border border-ember/20 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-[oklch(0.78_0.16_50)]">
                       {skill.category}
                     </span>
-                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-cyan-500/10 border border-cyan-400/30 text-cyan-300 shadow-[0_0_15px_rgba(6,182,212,0.2)] group-hover:border-cyan-400 group-hover:scale-110 transition-all duration-300">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-ember/10 border border-ember/25 text-ember shadow-[0_0_15px_oklch(0.69_0.21_45_/_0.2)] group-hover:border-ember/40 transition-all">
                       <Icon className="h-6 w-6" />
                     </div>
                   </div>
 
-                  {/* Title & Tagline */}
-                  <h2 className="font-display text-2xl font-bold text-white group-hover:text-cyan-300 transition-colors">
+                  <h3 className="font-display text-2xl font-bold text-white group-hover:text-ember transition-colors">
                     {skill.title}
-                  </h2>
-                  <p className="mt-2 text-xs font-semibold text-cyan-400/90 italic">
+                  </h3>
+                  <p className="mt-1 text-xs font-semibold uppercase tracking-wider text-[oklch(0.6_0.015_45)]">
                     {skill.tagline}
                   </p>
+                  <p className="mt-4 text-sm leading-relaxed text-[oklch(0.68_0.015_45)]">
+                    {skill.description}
+                  </p>
 
-                  <p className="mt-4 text-sm leading-relaxed text-slate-300">{skill.description}</p>
-
-                  {/* Key Points */}
-                  <div className="mt-6 space-y-2.5 border-t border-slate-800/80 pt-6">
-                    <h3 className="text-[11px] font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
-                      <Activity className="h-3.5 w-3.5 text-cyan-400" />
-                      Key Competencies
-                    </h3>
-                    <ul className="space-y-2 text-xs text-slate-300">
-                      {skill.keyPoints.map((point) => (
-                        <li key={point} className="flex items-start gap-2">
-                          <CheckCircle2 className="h-3.5 w-3.5 text-cyan-400 shrink-0 mt-0.5" />
-                          <span>{point}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                  <ul className="mt-6 space-y-2.5">
+                    {skill.keyPoints.map((pt) => (
+                      <li key={pt} className="flex items-start gap-2.5 text-sm">
+                        <CheckCircle2 className="h-4 w-4 text-ember mt-0.5 shrink-0" />
+                        <span className="text-[oklch(0.8_0.015_50)]">{pt}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
 
-                {/* Tags */}
-                <div className="mt-8 pt-4 border-t border-slate-800/60">
-                  <div className="flex flex-wrap gap-1.5">
+                <div className="mt-8 pt-6 border-t border-ember/12">
+                  <div className="flex flex-wrap gap-2">
                     {skill.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="rounded-md bg-slate-900/90 border border-slate-800 px-2.5 py-1 text-[10px] font-semibold text-slate-400 group-hover:border-cyan-500/20 group-hover:text-slate-300 transition-colors"
+                        className="rounded-full bg-ember/8 border border-ember/15 px-2.5 py-0.5 text-[11px] font-semibold text-[oklch(0.72_0.1_50)]"
                       >
                         {tag}
                       </span>
@@ -166,55 +142,22 @@ function SkillsPage() {
           })}
         </div>
 
-        {/* Practical Application Banner */}
-        <div className="relative overflow-hidden rounded-3xl border border-cyan-500/20 bg-gradient-to-r from-[#0c1628] via-[#09101d] to-[#0c1628] p-8 sm:p-10">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-            <div className="space-y-2 max-w-2xl">
-              <span className="text-xs font-bold uppercase tracking-wider text-cyan-400 flex items-center gap-2">
-                <Zap className="h-4 w-4 text-cyan-400" />
-                Commitment to Practical Excellence
-              </span>
-              <h3 className="font-display text-xl sm:text-2xl font-bold text-white">
-                Bridging Classroom Fundamentals with Industrial Practice
-              </h3>
-              <p className="text-sm leading-relaxed text-slate-300">
-                With a clear objective &ldquo;to gain practical experience and improve my skills in
-                the electrical field,&rdquo; CH Madhusudhan is eager to apply safety precautions,
-                motor operations, and PLC automation in a hands-on work environment.
-              </p>
-            </div>
-
-            <Button
-              asChild
-              className="bg-cyan-500 text-slate-950 font-bold uppercase tracking-wider text-xs hover:bg-cyan-400 shadow-[0_0_20px_rgba(6,182,212,0.4)] shrink-0"
-            >
-              <Link to="/contact">
-                <span>Discuss Opportunities</span>
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
+        {/* Bottom Banner */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 rounded-3xl border border-ember/15 bg-ember/5 p-8">
+          <div>
+            <h3 className="font-display text-xl font-bold text-white">
+              Personal Strengths &amp; Work Ethic
+            </h3>
+            <p className="text-sm text-[oklch(0.65_0.015_45)] mt-1">
+              Learn about Quick Learner, Team Work, Hard Working, and Discipline qualities.
+            </p>
           </div>
-        </div>
-
-        {/* Navigation Actions */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-slate-800">
           <Button
             asChild
-            variant="outline"
-            className="w-full sm:w-auto border-slate-800 bg-slate-900/70 text-slate-200 text-xs font-semibold uppercase tracking-wider hover:border-cyan-400 hover:text-cyan-300"
-          >
-            <Link to="/education">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              <span>Back to Education</span>
-            </Link>
-          </Button>
-
-          <Button
-            asChild
-            className="w-full sm:w-auto bg-cyan-500 text-slate-950 font-bold uppercase tracking-wider text-xs hover:bg-cyan-400 shadow-[0_0_20px_rgba(6,182,212,0.4)]"
+            className="bg-ember text-white font-bold uppercase tracking-wider text-xs hover:bg-ember-mid shadow-[0_0_20px_oklch(0.69_0.21_45_/_0.4)] shrink-0"
           >
             <Link to="/strengths">
-              <span>View Personal Strengths</span>
+              <span>View Strengths</span>
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>

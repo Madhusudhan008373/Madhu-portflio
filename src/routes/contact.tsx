@@ -1,20 +1,6 @@
 import { useState } from "react";
-import { createFileRoute, Link } from "@tanstack/react-router";
-import {
-  Phone,
-  Mail,
-  MapPin,
-  Copy,
-  Check,
-  Send,
-  ArrowRight,
-  ArrowLeft,
-  GraduationCap,
-  Sparkles,
-  Zap,
-  Clock,
-  ShieldCheck,
-} from "lucide-react";
+import { createFileRoute } from "@tanstack/react-router";
+import { Phone, Mail, MapPin, Copy, Check, Send, Clock, ShieldCheck } from "lucide-react";
 import { PageLayout } from "@/components/layout/PageLayout";
 import { Button } from "@/components/ui/button";
 
@@ -68,61 +54,58 @@ function ContactPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate sending message / trigger mailto fallback
     setFormSubmitted(true);
   };
 
   return (
     <PageLayout
-      badge="Get in Touch"
-      title="Contact CH Madhusudhan"
-      subtitle="Feel free to connect directly via phone or email for internship placements, apprenticeship roles, or technical discussions in the electrical field."
+      badge="Direct Contact"
+      title="Get in Touch"
+      subtitle="Feel free to connect directly via phone or email for opportunities, inquiries, or technical discussions in the electrical field."
     >
       <div className="space-y-12">
-        {/* Direct Contact Cards Grid */}
+        {/* Contact Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Phone Card */}
-          <div className="group relative flex flex-col justify-between rounded-3xl border border-cyan-500/30 bg-[#0c1424]/90 p-8 shadow-[0_15px_40px_rgba(0,0,0,0.5)] transition-all duration-300 hover:border-cyan-400">
+          <div className="group relative flex flex-col justify-between rounded-3xl border border-ember/25 bg-section-card p-8 shadow-[0_15px_40px_oklch(0_0_0_/_0.4)] transition-all duration-300 hover:border-ember/40">
             <div>
               <div className="flex items-center justify-between mb-6">
-                <span className="rounded-full bg-cyan-500/10 border border-cyan-400/30 px-3 py-1 text-xs font-bold uppercase tracking-wider text-cyan-300">
-                  Call & WhatsApp
+                <span className="rounded-full bg-ember/10 border border-ember/25 px-3 py-1 text-xs font-bold uppercase tracking-wider text-ember">
+                  Direct Phone
                 </span>
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-cyan-500/15 border border-cyan-400/40 text-cyan-300 shadow-[0_0_15px_rgba(6,182,212,0.3)]">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-ember/15 border border-ember/35 text-ember shadow-[0_0_15px_oklch(0.69_0.21_45_/_0.2)]">
                   <Phone className="h-6 w-6" />
                 </div>
               </div>
-
-              <h2 className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                Direct Phone
-              </h2>
+              <span className="text-xs font-bold uppercase tracking-wider text-[oklch(0.55_0.015_45)] block">
+                Mobile Number
+              </span>
               <p className="mt-2 font-display text-2xl font-bold text-white tracking-tight">
                 6302657026
               </p>
-              <p className="mt-2 text-xs text-slate-400">
-                Available for phone discussions, interviews, and direct communication.
+              <p className="mt-2 text-xs text-[oklch(0.6_0.015_45)] leading-relaxed">
+                Available for phone discussions, interviews, and direct queries.
               </p>
             </div>
 
-            <div className="mt-8 flex items-center gap-3 pt-6 border-t border-slate-800">
+            <div className="mt-8 flex items-center gap-3 pt-6 border-t border-ember/15">
               <Button
                 asChild
-                className="flex-1 bg-cyan-500 text-slate-950 font-bold uppercase tracking-wider text-xs hover:bg-cyan-400"
+                className="flex-1 bg-ember text-white font-bold uppercase tracking-wider text-xs hover:bg-ember-mid shadow-[0_0_20px_oklch(0.69_0.21_45_/_0.4)]"
               >
                 <a href="tel:6302657026">
                   <Phone className="mr-2 h-3.5 w-3.5" />
                   <span>Call Now</span>
                 </a>
               </Button>
-
               <button
                 type="button"
                 onClick={handleCopyPhone}
                 title="Copy phone number"
-                className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-800 bg-slate-900 text-slate-300 hover:border-cyan-400 hover:text-cyan-300 transition-colors"
+                className="flex h-10 w-10 items-center justify-center rounded-xl border border-ember/20 bg-ember/5 text-[oklch(0.72_0.08_50)] hover:border-ember/40 hover:text-ember transition-colors"
               >
                 {copiedPhone ? (
-                  <Check className="h-4 w-4 text-emerald-400" />
+                  <Check className="h-4 w-4 text-green-400" />
                 ) : (
                   <Copy className="h-4 w-4" />
                 )}
@@ -131,47 +114,45 @@ function ContactPage() {
           </div>
 
           {/* Email Card */}
-          <div className="group relative flex flex-col justify-between rounded-3xl border border-cyan-500/30 bg-[#0c1424]/90 p-8 shadow-[0_15px_40px_rgba(0,0,0,0.5)] transition-all duration-300 hover:border-cyan-400">
+          <div className="group relative flex flex-col justify-between rounded-3xl border border-ember/25 bg-section-card p-8 shadow-[0_15px_40px_oklch(0_0_0_/_0.4)] transition-all duration-300 hover:border-ember/40">
             <div>
               <div className="flex items-center justify-between mb-6">
-                <span className="rounded-full bg-cyan-500/10 border border-cyan-400/30 px-3 py-1 text-xs font-bold uppercase tracking-wider text-cyan-300">
-                  Email
+                <span className="rounded-full bg-ember/10 border border-ember/25 px-3 py-1 text-xs font-bold uppercase tracking-wider text-ember">
+                  Email Inbox
                 </span>
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-cyan-500/15 border border-cyan-400/40 text-cyan-300 shadow-[0_0_15px_rgba(6,182,212,0.3)]">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-ember/15 border border-ember/35 text-ember shadow-[0_0_15px_oklch(0.69_0.21_45_/_0.2)]">
                   <Mail className="h-6 w-6" />
                 </div>
               </div>
-
-              <h2 className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                Email Address
-              </h2>
-              <p className="mt-2 font-display text-lg sm:text-xl font-bold text-white break-all tracking-tight">
+              <span className="text-xs font-bold uppercase tracking-wider text-[oklch(0.55_0.015_45)] block">
+                Personal Email
+              </span>
+              <p className="mt-2 font-display text-base font-bold text-white tracking-tight break-all">
                 chitadamadhusudhan@gmail.com
               </p>
-              <p className="mt-2 text-xs text-slate-400">
-                Send official inquiries, job details, or internship opportunities anytime.
+              <p className="mt-2 text-xs text-[oklch(0.6_0.015_45)] leading-relaxed">
+                Send official inquiries, job details, or technical communications anytime.
               </p>
             </div>
 
-            <div className="mt-8 flex items-center gap-3 pt-6 border-t border-slate-800">
+            <div className="mt-8 flex items-center gap-3 pt-6 border-t border-ember/15">
               <Button
                 asChild
-                className="flex-1 bg-cyan-500 text-slate-950 font-bold uppercase tracking-wider text-xs hover:bg-cyan-400"
+                className="flex-1 bg-ember text-white font-bold uppercase tracking-wider text-xs hover:bg-ember-mid shadow-[0_0_20px_oklch(0.69_0.21_45_/_0.4)]"
               >
                 <a href="mailto:chitadamadhusudhan@gmail.com">
                   <Mail className="mr-2 h-3.5 w-3.5" />
                   <span>Send Email</span>
                 </a>
               </Button>
-
               <button
                 type="button"
                 onClick={handleCopyEmail}
                 title="Copy email address"
-                className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-800 bg-slate-900 text-slate-300 hover:border-cyan-400 hover:text-cyan-300 transition-colors"
+                className="flex h-10 w-10 items-center justify-center rounded-xl border border-ember/20 bg-ember/5 text-[oklch(0.72_0.08_50)] hover:border-ember/40 hover:text-ember transition-colors"
               >
                 {copiedEmail ? (
-                  <Check className="h-4 w-4 text-emerald-400" />
+                  <Check className="h-4 w-4 text-green-400" />
                 ) : (
                   <Copy className="h-4 w-4" />
                 )}
@@ -179,159 +160,150 @@ function ContactPage() {
             </div>
           </div>
 
-          {/* Academic Base / Location Card */}
-          <div className="group relative flex flex-col justify-between rounded-3xl border border-slate-800 bg-[#0a0f1c]/80 p-8 transition-all duration-300 hover:border-cyan-500/40 md:col-span-2 lg:col-span-1">
+          {/* Location / Institution Card */}
+          <div className="group relative flex flex-col justify-between rounded-3xl border border-ember/15 bg-section-card p-8 transition-all duration-300 md:col-span-2 lg:col-span-1">
             <div>
               <div className="flex items-center justify-between mb-6">
-                <span className="rounded-full bg-slate-900 border border-slate-800 px-3 py-1 text-xs font-bold uppercase tracking-wider text-slate-300">
-                  Location & Campus
+                <span className="rounded-full bg-ember/8 border border-ember/20 px-3 py-1 text-xs font-bold uppercase tracking-wider text-[oklch(0.78_0.16_50)]">
+                  Location
                 </span>
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-900 border border-slate-800 text-cyan-400">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-ember/10 border border-ember/25 text-ember">
                   <MapPin className="h-6 w-6" />
                 </div>
               </div>
-
-              <h2 className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                Academic Base
-              </h2>
-              <p className="mt-2 font-display text-xl font-bold text-white">
-                Government Polytechnic College
-              </p>
-              <p className="mt-1 text-sm text-cyan-300">Pendurthi, Andhra Pradesh</p>
-              <p className="mt-3 text-xs text-slate-400">
-                Schooling from GVMC High School, Madhavadhara (86%).
+              <span className="text-xs font-bold uppercase tracking-wider text-[oklch(0.55_0.015_45)] block">
+                Current Location
+              </span>
+              <p className="mt-2 font-display text-2xl font-bold text-white">Visakhapatnam</p>
+              <p className="mt-1 text-sm text-[oklch(0.78_0.16_50)]">Pendurthi, Andhra Pradesh</p>
+              <p className="mt-3 text-xs text-[oklch(0.6_0.015_45)] leading-relaxed">
+                Government Polytechnic College, Pendurthi. Available across Visakhapatnam region.
               </p>
             </div>
 
-            <div className="mt-8 pt-6 border-t border-slate-800">
-              <div className="inline-flex items-center gap-2 text-xs font-semibold text-slate-400">
-                <Clock className="h-3.5 w-3.5 text-cyan-400" />
-                <span>IST (Indian Standard Time)</span>
+            <div className="mt-8 pt-6 border-t border-ember/15">
+              <div className="flex items-center gap-2 rounded-xl bg-ember/5 border border-ember/15 px-3 py-2 text-xs text-slate-300">
+                <Clock className="h-3.5 w-3.5 text-ember" />
+                <span>IST (UTC +5:30) Timezone</span>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Contact Form & Profile Summary Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          {/* Quick Message Form */}
-          <div className="lg:col-span-7 rounded-3xl border border-slate-800 bg-[#0a0f1c]/90 p-8 sm:p-10">
-            <div className="mb-6 space-y-1">
-              <span className="text-xs font-bold uppercase tracking-wider text-cyan-400 flex items-center gap-2">
-                <Send className="h-3.5 w-3.5 text-cyan-400" />
-                Direct Inquiry
+        {/* Form and Info Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          {/* Contact Message Form */}
+          <div className="lg:col-span-7 rounded-3xl border border-ember/20 bg-section-card p-8 sm:p-10">
+            <div className="mb-8">
+              <span className="text-xs font-bold uppercase tracking-wider text-ember flex items-center gap-2">
+                <Send className="h-3.5 w-3.5" />
+                Direct Message
               </span>
-              <h3 className="font-display text-2xl font-bold text-white">Send a Message</h3>
-              <p className="text-xs text-slate-400">
-                Have an inquiry or opportunity? Fill out the details below.
-              </p>
+              <h3 className="font-display text-2xl font-bold text-white mt-1">Leave a Message</h3>
             </div>
 
             {formSubmitted ? (
-              <div className="rounded-2xl border border-cyan-500/30 bg-cyan-950/20 p-8 text-center space-y-4 animate-in fade-in zoom-in-95 duration-300">
-                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-400/40">
-                  <Check className="h-7 w-7" />
+              <div className="rounded-2xl border border-ember/25 bg-ember/5 p-8 text-center space-y-4">
+                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-ember/15 text-ember border border-ember/30">
+                  <Check className="h-7 w-7 text-green-400" />
                 </div>
                 <h4 className="font-display text-xl font-bold text-white">
-                  Thank You for Reaching Out!
+                  Message Sent Successfully!
                 </h4>
-                <p className="text-sm text-slate-300 max-w-md mx-auto">
-                  Your message has been formatted. You can also reach CH Madhusudhan directly at{" "}
-                  <strong className="text-cyan-300 font-bold">6302657026</strong> or{" "}
-                  <strong className="text-cyan-300 font-bold">chitadamadhusudhan@gmail.com</strong>.
+                <p className="text-sm text-[oklch(0.72_0.015_50)] max-w-sm mx-auto">
+                  Thank you for reaching out. For urgent communications, feel free to call directly
+                  at <strong className="text-ember font-bold">6302657026</strong>.
                 </p>
-                <div className="pt-2">
-                  <Button
-                    onClick={() => {
-                      setFormSubmitted(false);
-                      setFormData({ name: "", email: "", subject: "", message: "" });
-                    }}
-                    variant="outline"
-                    className="border-slate-800 text-slate-200 text-xs uppercase font-bold tracking-wider hover:border-cyan-400"
-                  >
-                    Send Another Message
-                  </Button>
-                </div>
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() => {
+                    setFormSubmitted(false);
+                    setFormData({ name: "", email: "", subject: "", message: "" });
+                  }}
+                  className="border-ember/30 text-white text-xs uppercase font-bold tracking-wider hover:border-ember"
+                >
+                  Send Another Message
+                </Button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="space-y-1.5">
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div className="space-y-2">
                     <label
-                      htmlFor="name"
-                      className="text-xs font-bold uppercase tracking-wider text-slate-400"
+                      htmlFor="form-name"
+                      className="text-xs font-bold uppercase tracking-wider text-[oklch(0.55_0.015_45)]"
                     >
                       Your Name
                     </label>
                     <input
-                      id="name"
+                      id="form-name"
                       type="text"
                       required
-                      placeholder="e.g. John Doe"
+                      placeholder="e.g. Ramesh Varma"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full rounded-xl border border-slate-800 bg-slate-900/80 px-4 py-3 text-sm text-white placeholder-slate-500 focus:border-cyan-400 focus:outline-none focus:ring-1 focus:ring-cyan-400 transition-colors"
+                      className="w-full rounded-xl border border-ember/20 bg-ember/5 px-4 py-3 text-sm text-white placeholder-[oklch(0.45_0.01_45)] focus:border-ember/50 focus:outline-none focus:ring-1 focus:ring-ember/40 transition-colors"
                     />
                   </div>
-
-                  <div className="space-y-1.5">
+                  <div className="space-y-2">
                     <label
-                      htmlFor="email"
-                      className="text-xs font-bold uppercase tracking-wider text-slate-400"
+                      htmlFor="form-email"
+                      className="text-xs font-bold uppercase tracking-wider text-[oklch(0.55_0.015_45)]"
                     >
-                      Your Email
+                      Email Address
                     </label>
                     <input
-                      id="email"
+                      id="form-email"
                       type="email"
                       required
-                      placeholder="e.g. name@company.com"
+                      placeholder="you@example.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full rounded-xl border border-slate-800 bg-slate-900/80 px-4 py-3 text-sm text-white placeholder-slate-500 focus:border-cyan-400 focus:outline-none focus:ring-1 focus:ring-cyan-400 transition-colors"
+                      className="w-full rounded-xl border border-ember/20 bg-ember/5 px-4 py-3 text-sm text-white placeholder-[oklch(0.45_0.01_45)] focus:border-ember/50 focus:outline-none focus:ring-1 focus:ring-ember/40 transition-colors"
                     />
                   </div>
                 </div>
 
-                <div className="space-y-1.5">
+                <div className="space-y-2">
                   <label
-                    htmlFor="subject"
-                    className="text-xs font-bold uppercase tracking-wider text-slate-400"
+                    htmlFor="form-subject"
+                    className="text-xs font-bold uppercase tracking-wider text-[oklch(0.55_0.015_45)]"
                   >
                     Subject
                   </label>
                   <input
-                    id="subject"
+                    id="form-subject"
                     type="text"
                     required
-                    placeholder="e.g. Internship Opportunity in Electrical Engineering"
+                    placeholder="e.g. Electrical Engineering Inquiries"
                     value={formData.subject}
                     onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                    className="w-full rounded-xl border border-slate-800 bg-slate-900/80 px-4 py-3 text-sm text-white placeholder-slate-500 focus:border-cyan-400 focus:outline-none focus:ring-1 focus:ring-cyan-400 transition-colors"
+                    className="w-full rounded-xl border border-ember/20 bg-ember/5 px-4 py-3 text-sm text-white placeholder-[oklch(0.45_0.01_45)] focus:border-ember/50 focus:outline-none focus:ring-1 focus:ring-ember/40 transition-colors"
                   />
                 </div>
 
-                <div className="space-y-1.5">
+                <div className="space-y-2">
                   <label
-                    htmlFor="message"
-                    className="text-xs font-bold uppercase tracking-wider text-slate-400"
+                    htmlFor="form-message"
+                    className="text-xs font-bold uppercase tracking-wider text-[oklch(0.55_0.015_45)]"
                   >
                     Message
                   </label>
                   <textarea
-                    id="message"
+                    id="form-message"
                     rows={4}
                     required
-                    placeholder="Type your message or project details here..."
+                    placeholder="Write your message here..."
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full rounded-xl border border-slate-800 bg-slate-900/80 px-4 py-3 text-sm text-white placeholder-slate-500 focus:border-cyan-400 focus:outline-none focus:ring-1 focus:ring-cyan-400 transition-colors"
+                    className="w-full rounded-xl border border-ember/20 bg-ember/5 px-4 py-3 text-sm text-white placeholder-[oklch(0.45_0.01_45)] focus:border-ember/50 focus:outline-none focus:ring-1 focus:ring-ember/40 transition-colors"
                   />
                 </div>
 
                 <Button
                   type="submit"
-                  className="w-full bg-cyan-500 text-slate-950 font-bold uppercase tracking-wider text-xs hover:bg-cyan-400 shadow-[0_0_20px_rgba(6,182,212,0.4)]"
+                  className="w-full bg-ember text-white font-bold uppercase tracking-wider text-xs hover:bg-ember-mid shadow-[0_0_20px_oklch(0.69_0.21_45_/_0.4)]"
                 >
                   <Send className="mr-2 h-4 w-4" />
                   <span>Send Message</span>
@@ -340,80 +312,56 @@ function ContactPage() {
             )}
           </div>
 
-          {/* Profile Overview Card */}
-          <div className="lg:col-span-5 rounded-3xl border border-cyan-500/20 bg-[#0c1424]/90 p-8 space-y-6">
-            <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-cyan-400">
-                Summary Profile
-              </span>
-              <h3 className="mt-1 font-display text-2xl font-bold text-white">CH Madhusudhan</h3>
-              <p className="text-xs text-slate-400">
-                Diploma in EEE • Government Polytechnic College, Pendurthi
-              </p>
-            </div>
-
-            <div className="rounded-2xl border border-cyan-500/20 bg-slate-900/60 p-4">
-              <span className="text-[11px] font-bold uppercase tracking-wider text-cyan-400 block mb-1">
-                Career Objective
-              </span>
-              <p className="text-xs italic text-slate-200 leading-relaxed">
-                &ldquo;To gain practical experience and improve my skills in the electrical
-                field.&rdquo;
-              </p>
-            </div>
-
-            <div className="space-y-3 border-t border-slate-800 pt-4 text-xs">
-              <div className="flex justify-between py-1 border-b border-slate-800/60">
-                <span className="text-slate-400 font-medium">Education</span>
-                <span className="text-white font-bold text-right">Diploma EEE (Pursuing)</span>
-              </div>
-              <div className="flex justify-between py-1 border-b border-slate-800/60">
-                <span className="text-slate-400 font-medium">SSC Score</span>
-                <span className="text-cyan-300 font-bold text-right">86% (GVMC High School)</span>
-              </div>
-              <div className="flex justify-between py-1 border-b border-slate-800/60">
-                <span className="text-slate-400 font-medium">Technical Skills</span>
-                <span className="text-white font-bold text-right">Safety • Motors • PLC</span>
-              </div>
-              <div className="flex justify-between py-1">
-                <span className="text-slate-400 font-medium">Strengths</span>
-                <span className="text-white font-bold text-right">Learner • Team • Diligent</span>
-              </div>
-            </div>
-
-            <div className="pt-2">
-              <div className="flex items-center gap-3 rounded-2xl bg-cyan-950/30 border border-cyan-500/30 p-3.5">
-                <ShieldCheck className="h-6 w-6 text-cyan-400 shrink-0" />
-                <p className="text-[11px] text-slate-300 leading-tight">
-                  Prompt communication guaranteed. Reach out via call or email for any verification.
+          {/* Verification & Academic Snapshot */}
+          <div className="lg:col-span-5 rounded-3xl border border-ember/15 bg-[oklch(0.11_0.028_41)] p-8 sm:p-10 flex flex-col justify-between">
+            <div className="space-y-6">
+              <div>
+                <span className="text-xs font-bold uppercase tracking-wider text-ember">
+                  Candidate Snapshot
+                </span>
+                <h3 className="font-display text-2xl font-bold text-white mt-1">CH Madhusudhan</h3>
+                <p className="text-xs text-[oklch(0.6_0.015_45)]">
+                  Government Polytechnic College, Pendurthi
                 </p>
               </div>
+
+              <div className="rounded-2xl border border-ember/20 bg-ember/5 p-4">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-ember block mb-1">
+                  Career Objective
+                </span>
+                <p className="text-xs italic text-[oklch(0.85_0.015_50)] leading-relaxed">
+                  &ldquo;To gain practical experience and improve my skills in the electrical
+                  field.&rdquo;
+                </p>
+              </div>
+
+              <div className="space-y-3 border-t border-ember/15 pt-4 text-xs">
+                <div className="flex justify-between py-1.5 border-b border-ember/10">
+                  <span className="text-[oklch(0.55_0.015_45)]">Education</span>
+                  <span className="text-white font-bold">Diploma in EEE (Pursuing)</span>
+                </div>
+                <div className="flex justify-between py-1.5 border-b border-ember/10">
+                  <span className="text-[oklch(0.55_0.015_45)]">SSC Score</span>
+                  <span className="text-ember font-bold">86% (GVMC High School)</span>
+                </div>
+                <div className="flex justify-between py-1.5 border-b border-ember/10">
+                  <span className="text-[oklch(0.55_0.015_45)]">Core Skills</span>
+                  <span className="text-white font-bold">Electrical Safety, Motors, PLC</span>
+                </div>
+                <div className="flex justify-between py-1.5">
+                  <span className="text-[oklch(0.55_0.015_45)]">Key Strengths</span>
+                  <span className="text-white font-bold">Quick Learner, Team Work, Discipline</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-8 pt-6 border-t border-ember/15 flex items-center gap-3">
+              <ShieldCheck className="h-6 w-6 text-ember shrink-0" />
+              <p className="text-xs text-[oklch(0.72_0.015_50)]">
+                Direct communication verified. All inquiries receive prompt responses.
+              </p>
             </div>
           </div>
-        </div>
-
-        {/* Navigation Actions */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-slate-800">
-          <Button
-            asChild
-            variant="outline"
-            className="w-full sm:w-auto border-slate-800 bg-slate-900/70 text-slate-200 text-xs font-semibold uppercase tracking-wider hover:border-cyan-400 hover:text-cyan-300"
-          >
-            <Link to="/strengths">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              <span>Back to Strengths</span>
-            </Link>
-          </Button>
-
-          <Button
-            asChild
-            className="w-full sm:w-auto bg-cyan-500 text-slate-950 font-bold uppercase tracking-wider text-xs hover:bg-cyan-400 shadow-[0_0_20px_rgba(6,182,212,0.4)]"
-          >
-            <Link to="/">
-              <span>Return to Home</span>
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </Button>
         </div>
       </div>
     </PageLayout>

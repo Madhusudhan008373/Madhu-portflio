@@ -7,6 +7,7 @@ import { SkillsSection } from "@/components/sections/SkillsSection";
 import { StrengthsSection } from "@/components/sections/StrengthsSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { Footer } from "@/components/layout/Footer";
+import { BottomNavBar } from "@/components/ui/bottom-nav-bar";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -42,6 +43,9 @@ function Index() {
         <ContactSection />
         <Footer />
       </div>
+
+      {/* Floating Bottom Navigation Bar */}
+      <BottomNavBar stickyBottom />
     </div>
   );
 }

@@ -36,21 +36,21 @@ export function Navbar() {
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-300",
         scrolled
-          ? "bg-[#090d16]/90 border-b border-cyan-500/15 shadow-[0_10px_30px_rgba(0,0,0,0.5)] backdrop-blur-md"
+          ? "bg-[oklch(0.08_0.02_40)]/90 border-b border-ember/20 shadow-[0_10px_30px_rgba(0,0,0,0.5)] backdrop-blur-md"
           : "bg-transparent",
       )}
     >
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 sm:px-8 lg:px-12">
         {/* Logo */}
         <Link to="/" className="group flex items-center gap-3 transition-transform hover:scale-102">
-          <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500/20 to-cyan-500/5 border border-cyan-400/40 text-cyan-300 shadow-[0_0_15px_rgba(6,182,212,0.25)] font-display text-xl font-bold transition-all duration-300 group-hover:border-cyan-300 group-hover:shadow-[0_0_20px_rgba(6,182,212,0.45)]">
+          <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-ember/10 border border-ember/35 text-ember shadow-[0_0_15px_oklch(0.69_0.21_45_/_0.25)] font-display text-xl font-bold transition-all duration-300 group-hover:border-ember group-hover:shadow-[0_0_20px_oklch(0.69_0.21_45_/_0.4)]">
             M
           </span>
           <div className="flex flex-col">
-            <span className="font-display text-lg font-bold tracking-tight text-white group-hover:text-cyan-300 transition-colors">
+            <span className="font-display text-lg font-bold tracking-tight text-white group-hover:text-ember transition-colors">
               CH Madhusudhan
             </span>
-            <span className="text-[11px] font-medium tracking-wider text-cyan-400/80 uppercase">
+            <span className="text-[11px] font-medium tracking-wider text-ember/80 uppercase">
               EEE • Electrical
             </span>
           </div>
@@ -58,7 +58,7 @@ export function Navbar() {
 
         {/* Desktop Navigation */}
         <nav aria-label="Main Navigation" className="hidden lg:block">
-          <ul className="flex items-center gap-1 xl:gap-2 rounded-full border border-cyan-500/20 bg-[#0d1424]/70 px-4 py-1.5 shadow-inner backdrop-blur-md">
+          <ul className="flex items-center gap-1 xl:gap-2 rounded-full border border-ember/20 bg-section-card/80 px-4 py-1.5 shadow-inner backdrop-blur-md">
             {navLinks.map((link) => {
               const isActive =
                 link.href === "/" ? currentPath === "/" : currentPath.startsWith(link.href);
@@ -70,7 +70,7 @@ export function Navbar() {
                     className={cn(
                       "relative rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-all duration-300 block",
                       isActive
-                        ? "bg-cyan-500 text-slate-950 shadow-[0_0_15px_rgba(6,182,212,0.6)] font-bold"
+                        ? "bg-ember text-white shadow-[0_0_15px_oklch(0.69_0.21_45_/_0.5)] font-bold"
                         : "text-slate-300 hover:text-white hover:bg-white/5",
                     )}
                   >
@@ -87,7 +87,7 @@ export function Navbar() {
           <Button
             asChild
             size="sm"
-            className="rounded-full bg-gradient-to-r from-cyan-500 to-cyan-400 px-5 py-2 text-xs font-bold uppercase tracking-wider text-slate-950 shadow-[0_0_20px_rgba(6,182,212,0.35)] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_25px_rgba(6,182,212,0.6)] hover:from-cyan-400 hover:to-cyan-300"
+            className="rounded-full bg-ember px-5 py-2 text-xs font-bold uppercase tracking-wider text-white shadow-[0_0_20px_oklch(0.69_0.21_45_/_0.35)] transition-all duration-300 hover:scale-105 hover:bg-ember-mid hover:shadow-[0_0_25px_oklch(0.69_0.21_45_/_0.5)]"
           >
             <Link to="/contact">
               <span>Contact</span>
@@ -102,7 +102,7 @@ export function Navbar() {
           onClick={() => setMobileOpen((prev) => !prev)}
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileOpen}
-          className="flex h-11 w-11 items-center justify-center rounded-xl border border-cyan-500/30 bg-[#0d1424]/80 text-cyan-300 shadow-sm transition-all hover:bg-cyan-500/10 hover:border-cyan-400 lg:hidden"
+          className="flex h-11 w-11 items-center justify-center rounded-xl border border-ember/30 bg-section-card/80 text-ember shadow-sm transition-all hover:bg-ember/10 hover:border-ember lg:hidden"
         >
           {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
@@ -110,7 +110,7 @@ export function Navbar() {
 
       {/* Mobile Menu Overlay */}
       {mobileOpen && (
-        <div className="border-b border-cyan-500/20 bg-[#090e1a]/95 px-6 py-6 shadow-2xl backdrop-blur-xl lg:hidden animate-in fade-in slide-in-from-top-4 duration-200">
+        <div className="border-b border-ember/20 bg-[oklch(0.09_0.025_40)]/98 px-6 py-6 shadow-2xl backdrop-blur-xl lg:hidden animate-in fade-in slide-in-from-top-4 duration-200">
           <nav aria-label="Mobile Navigation" className="flex flex-col gap-2">
             {navLinks.map((link) => {
               const isActive =
@@ -124,8 +124,8 @@ export function Navbar() {
                   className={cn(
                     "flex items-center justify-between rounded-xl px-4 py-3 text-sm font-semibold uppercase tracking-wider transition-all",
                     isActive
-                      ? "bg-cyan-500 text-slate-950 shadow-[0_0_15px_rgba(6,182,212,0.5)] font-bold"
-                      : "text-slate-200 hover:bg-white/5 hover:text-cyan-300",
+                      ? "bg-ember text-white shadow-[0_0_15px_oklch(0.69_0.21_45_/_0.5)] font-bold"
+                      : "text-slate-200 hover:bg-white/5 hover:text-ember",
                   )}
                 >
                   <span>{link.name}</span>
@@ -135,23 +135,23 @@ export function Navbar() {
             })}
           </nav>
 
-          <div className="mt-6 border-t border-slate-800 pt-6">
-            <p className="text-xs font-semibold uppercase tracking-widest text-cyan-400 mb-3">
+          <div className="mt-6 border-t border-ember/15 pt-6">
+            <p className="text-xs font-semibold uppercase tracking-widest text-ember mb-3">
               Direct Inquiries
             </p>
             <div className="flex flex-col gap-2.5">
               <a
                 href="tel:6302657026"
-                className="flex items-center gap-3 rounded-lg bg-slate-900/80 border border-slate-800 px-3.5 py-2.5 text-xs text-slate-200 hover:border-cyan-500/40 hover:text-cyan-300 transition-colors"
+                className="flex items-center gap-3 rounded-lg bg-ember/5 border border-ember/15 px-3.5 py-2.5 text-xs text-slate-200 hover:border-ember/40 hover:text-ember transition-colors"
               >
-                <Phone className="h-4 w-4 text-cyan-400" />
+                <Phone className="h-4 w-4 text-ember" />
                 <span>+91 6302657026</span>
               </a>
               <a
                 href="mailto:chitadamadhusudhan@gmail.com"
-                className="flex items-center gap-3 rounded-lg bg-slate-900/80 border border-slate-800 px-3.5 py-2.5 text-xs text-slate-200 hover:border-cyan-500/40 hover:text-cyan-300 transition-colors"
+                className="flex items-center gap-3 rounded-lg bg-ember/5 border border-ember/15 px-3.5 py-2.5 text-xs text-slate-200 hover:border-ember/40 hover:text-ember transition-colors"
               >
-                <Mail className="h-4 w-4 text-cyan-400" />
+                <Mail className="h-4 w-4 text-ember" />
                 <span className="truncate">chitadamadhusudhan@gmail.com</span>
               </a>
             </div>

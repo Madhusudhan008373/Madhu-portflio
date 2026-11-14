@@ -92,7 +92,7 @@ function SiteNav() {
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-500",
         scrolled
-          ? "bg-[#080d18]/90 border-b border-cyan-500/20 shadow-[0_10px_30px_rgba(0,0,0,0.6)] backdrop-blur-md"
+          ? "bg-[oklch(0.08_0.02_40)]/90 border-b border-ember/20 shadow-[0_10px_30px_rgba(0,0,0,0.6)] backdrop-blur-md"
           : "bg-transparent",
       )}
     >
@@ -110,7 +110,7 @@ function SiteNav() {
                     className={cn(
                       "group relative type-nav transition-colors duration-300",
                       scrolled
-                        ? "text-slate-300 hover:text-cyan-300"
+                        ? "text-slate-300 hover:text-ember"
                         : "text-foreground/75 hover:text-foreground",
                     )}
                   >
@@ -118,7 +118,7 @@ function SiteNav() {
                     <span
                       className={cn(
                         "absolute -bottom-2 left-0 h-px w-0 transition-all duration-500 group-hover:w-full",
-                        scrolled ? "bg-cyan-400" : "bg-primary",
+                        scrolled ? "bg-ember" : "bg-primary",
                       )}
                     />
                   </a>
@@ -132,26 +132,26 @@ function SiteNav() {
 
       {/* Mobile Menu Dropdown */}
       {mobileOpen && (
-        <div className="border-b border-cyan-500/20 bg-[#090e1a]/98 px-6 py-6 shadow-2xl backdrop-blur-xl lg:hidden animate-in fade-in slide-in-from-top-4 duration-200">
+        <div className="border-b border-ember/20 bg-[oklch(0.09_0.025_40)]/98 px-6 py-6 shadow-2xl backdrop-blur-xl lg:hidden animate-in fade-in slide-in-from-top-4 duration-200">
           <nav aria-label="Mobile Navigation" className="flex flex-col gap-2">
             {navItems.map((item) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
                 onClick={() => setMobileOpen(false)}
-                className="rounded-xl px-4 py-3 text-sm font-semibold uppercase tracking-wider text-slate-200 hover:bg-cyan-500/10 hover:text-cyan-300 transition-colors"
+                className="rounded-xl px-4 py-3 text-sm font-semibold uppercase tracking-wider text-slate-200 hover:bg-ember/10 hover:text-ember transition-colors"
               >
                 {item}
               </a>
             ))}
           </nav>
-          <div className="mt-4 border-t border-slate-800 pt-4 flex flex-col gap-2 text-xs text-slate-400">
-            <a href="tel:6302657026" className="font-semibold text-slate-200 hover:text-cyan-300">
+          <div className="mt-4 border-t border-ember/15 pt-4 flex flex-col gap-2 text-xs text-slate-400">
+            <a href="tel:6302657026" className="font-semibold text-slate-200 hover:text-ember">
               📞 +91 6302657026
             </a>
             <a
               href="mailto:chitadamadhusudhan@gmail.com"
-              className="font-semibold text-slate-200 hover:text-cyan-300"
+              className="font-semibold text-slate-200 hover:text-ember"
             >
               ✉️ chitadamadhusudhan@gmail.com
             </a>
@@ -243,21 +243,7 @@ function Portrait() {
 function WhitePanel() {
   return (
     <section className="relative flex flex-col rounded-t-[3rem] bg-background px-6 pb-8 pt-16 sm:px-10 lg:mt-4 lg:h-[calc(100dvh-1rem)] lg:w-[45%] lg:rounded-tl-[3rem] lg:rounded-tr-none lg:px-12 lg:pb-16 lg:pt-28 xl:px-16">
-      <div className="relative z-20 flex flex-1 flex-col justify-center pb-16 lg:items-end lg:pb-0">
-        <div className="animate-rise [animation-delay:380ms] lg:w-56 xl:w-64">
-          <p className="flex items-center gap-2 type-nav text-primary">
-            Available for
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping-soft rounded-full bg-primary" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
-            </span>
-          </p>
-          <p className="mt-4 font-display text-3xl font-semibold leading-[1.1] tracking-tight text-foreground xl:text-4xl">
-            Internship &<br />
-            Training
-          </p>
-        </div>
-      </div>
+      <div className="relative z-20 flex flex-1 flex-col justify-center pb-16 lg:items-end lg:pb-0"></div>
 
       <div className="mb-10 lg:hidden">
         <ClientAvatarsLight />
