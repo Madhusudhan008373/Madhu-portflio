@@ -1,9 +1,13 @@
 import { Target, GraduationCap, Wrench, ArrowRight, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { HangingScrollBulb } from "@/components/hero/HangingScrollBulb";
 
 export function AboutSection() {
   return (
     <section id="about" className="relative scroll-mt-24 px-6 py-24 sm:px-10 lg:px-16 xl:px-20">
+      {/* Interactive scroll-driven hanging illuminated Edison bulb */}
+      <HangingScrollBulb />
+
       {/* Background glow */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute -left-40 top-20 h-96 w-96 rounded-full bg-ember/5 blur-[120px]" />
