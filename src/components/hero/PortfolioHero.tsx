@@ -216,7 +216,7 @@ function Portrait() {
 function WhitePanel() {
   return (
     <section className="relative flex flex-col overflow-hidden rounded-t-[3rem] bg-background px-6 pb-8 pt-16 sm:px-10 lg:mt-4 lg:h-[calc(100dvh-1rem)] lg:w-[45%] lg:rounded-tl-[3rem] lg:rounded-tr-none lg:px-12 lg:pb-16 lg:pt-28 xl:px-16">
-      {/* Circuit Graphic (Layered behind foreground card and beside portrait) */}
+      {/* Circuit Graphic (Soft, shaded technical watermark blended into the white space) */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 z-0 flex items-center justify-start overflow-hidden select-none"
@@ -225,7 +225,7 @@ function WhitePanel() {
           src={circuitGraphic}
           alt=""
           loading="eager"
-          className="h-full w-full object-contain object-left-center opacity-85 mix-blend-multiply transition-opacity duration-500 scale-110 -translate-x-6 lg:-translate-x-10"
+          className="h-full w-full object-contain object-left-center opacity-20 contrast-[0.88] mix-blend-multiply transition-opacity duration-500 scale-110 -translate-x-6 lg:-translate-x-10"
         />
       </div>
 
