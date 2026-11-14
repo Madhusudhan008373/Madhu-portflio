@@ -11,7 +11,7 @@ import client3 from "@/assets/client-3.jpg";
 import client4 from "@/assets/client-4.jpg";
 import portrait from "@/assets/portrait.webp";
 import circuitGraphic from "@/assets/circuit.png";
-import roverGraphic from "@/assets/rover.jpg";
+import roverGraphic from "@/assets/rover.png";
 import { FilamentMenu } from "./FilamentMenu";
 
 /*
@@ -179,7 +179,7 @@ function WhitePanel() {
         />
       </motion.div>
 
-      {/* Engineering Machine Rover Sketch Artwork (1st Page Right Side) */}
+      {/* Engineering Machine Rover Sketch Artwork (1st Page Right Side - Transparent Background & Decreased Contrast) */}
       <div className="relative z-20 flex flex-1 items-center justify-center lg:justify-end my-2 lg:my-0">
         <motion.div
           initial={{ opacity: 0, scale: 0.94, y: 12 }}
@@ -192,26 +192,26 @@ function WhitePanel() {
             alt="Robotic exploration rover machine engineering blueprint sketch"
             width={928}
             height={970}
-            className="w-full h-auto object-contain mix-blend-multiply contrast-[1.10] brightness-[1.02] drop-shadow-sm transition-transform duration-500 group-hover:scale-[1.03]"
+            className="w-full h-auto object-contain opacity-75 contrast-[0.85] brightness-[1.04] transition-all duration-500 group-hover:opacity-95 group-hover:scale-[1.03]"
           />
         </motion.div>
       </div>
 
-      <div className="mb-6 lg:hidden relative z-20">
+      <div className="mb-10 lg:hidden relative z-20">
         <ClientAvatarsLight />
       </div>
 
-      <figure className="relative z-20 w-full animate-rise rounded-3xl bg-muted/95 backdrop-blur-md p-6 shadow-card [animation-delay:560ms] sm:max-w-xs sm:p-7 lg:ml-auto border border-foreground/5">
-        <Quote className="h-6 w-6 fill-primary text-primary" />
-        <blockquote className="mt-2 text-sm font-medium leading-relaxed text-foreground">
+      <figure className="relative z-20 w-full animate-rise rounded-3xl bg-muted/95 backdrop-blur-md p-6 shadow-card [animation-delay:560ms] sm:max-w-xs sm:p-8 lg:ml-auto border border-foreground/5">
+        <Quote className="h-7 w-7 fill-primary text-primary" />
+        <blockquote className="mt-3 text-sm font-medium leading-relaxed text-foreground">
           "To gain practical experience and improve my skills in the electrical field."
         </blockquote>
-        <figcaption className="mt-4 flex items-center justify-between gap-4">
+        <figcaption className="mt-5 flex items-center justify-between gap-4">
           <div>
-            <p className="type-nav text-foreground text-xs font-semibold">CH Madhusudhan</p>
-            <p className="mt-0.5 text-[11px] text-muted-foreground">Diploma EEE · Pendurthi</p>
+            <p className="type-nav text-foreground">CH Madhusudhan</p>
+            <p className="mt-1 text-xs text-muted-foreground">Diploma EEE · Pendurthi</p>
           </div>
-          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10 ring-2 ring-primary text-primary font-display text-base font-bold">
+          <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-primary/10 ring-2 ring-primary text-primary font-display text-lg font-bold">
             M
           </span>
         </figcaption>
