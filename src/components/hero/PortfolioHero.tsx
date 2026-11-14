@@ -96,7 +96,7 @@ function EmberPanel() {
     <section className="relative z-20 flex flex-col px-6 pb-8 pt-24 text-hero-foreground sm:px-10 lg:h-svh lg:w-[55%] lg:px-16 lg:pb-16 lg:pt-24 xl:px-20">
       <div className="flex flex-1 flex-col justify-center py-16 lg:py-0">
         <h1 className="animate-rise type-display text-[5.5rem] text-hero-foreground sm:text-[7.5rem] lg:text-[clamp(7.5rem,11vw,9.375rem)]">
-          Create
+          Madhu
         </h1>
         <p className="mt-8 max-w-[320px] animate-rise text-lg leading-relaxed text-hero-muted [animation-delay:150ms] lg:text-xl">
           Designs that inspire.
