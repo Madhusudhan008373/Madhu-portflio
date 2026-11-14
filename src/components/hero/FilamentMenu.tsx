@@ -25,7 +25,7 @@ import { cn } from "@/lib/utils";
  */
 export function FilamentBulbIcon({ isOpen }: { isOpen?: boolean }) {
   return (
-    <div className="relative flex items-center justify-center w-8 h-10 select-none">
+    <div className="relative flex items-center justify-center w-[34px] h-[44px] select-none">
       <svg
         width="34"
         height="44"
@@ -238,26 +238,17 @@ export function FilamentMenu() {
 
   return (
     <>
-      {/* GLOWING FILAMENT BULB 3-LINE BUTTON */}
+      {/* GLOWING FILAMENT BULB 3-LINE BUTTON (Only the lightbulb with no outer border or background box) */}
       <button
         onClick={() => setIsOpen(!isOpen)}
         aria-label="Open portfolio menu"
         aria-expanded={isOpen}
         className={cn(
-          "group relative flex items-center justify-center h-12 w-11 rounded-2xl",
-          "bg-gradient-to-b from-stone-900 via-stone-950 to-black text-white",
-          "border border-amber-500/50 hover:border-amber-400",
-          "shadow-[0_0_18px_rgba(245,158,11,0.38),0_2px_8px_rgba(0,0,0,0.5)]",
-          "hover:shadow-[0_0_28px_rgba(245,158,11,0.7),0_0_12px_rgba(255,237,213,0.85)]",
-          "transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 shrink-0",
+          "group relative flex items-center justify-center p-0.5 bg-transparent border-0 outline-none cursor-pointer",
+          "transition-transform duration-200 hover:scale-110 active:scale-95",
+          "focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 rounded-lg shrink-0",
         )}
       >
-        {/* Ambient Glow Aura Behind the Button */}
-        <span
-          aria-hidden="true"
-          className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-amber-500/20 via-orange-500/25 to-yellow-400/20 blur-md opacity-75 group-hover:opacity-100 transition-opacity"
-        />
-
         {/* Edison Light Bulb Icon with Glowing 3 Filaments & Metal Socket Base */}
         <FilamentBulbIcon isOpen={isOpen} />
       </button>
