@@ -12,24 +12,24 @@ import {
   User,
   ArrowRight,
   X,
-  FileText,
   Lightbulb,
-  ExternalLink,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 /**
  * FilamentBulbIcon:
- * Recreates the 3 glowing coiled filaments from an incandescent light bulb
- * as a high-tech glowing 3-line hamburger menu icon.
+ * Complete Edison incandescent lightbulb featuring:
+ * 1. The glass bulb envelope with ambient electric glow
+ * 2. The 3 horizontal coiled filament springs (acting as the 3-line menu)
+ * 3. The metallic screw socket holder at the bottom with authentic threaded ridges
  */
 export function FilamentBulbIcon({ isOpen }: { isOpen?: boolean }) {
   return (
-    <div className="relative flex items-center justify-center w-8 h-8 select-none">
+    <div className="relative flex items-center justify-center w-8 h-10 select-none">
       <svg
-        width="32"
-        height="32"
-        viewBox="0 0 32 32"
+        width="34"
+        height="44"
+        viewBox="0 0 34 46"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         className="overflow-visible"
@@ -54,124 +54,150 @@ export function FilamentBulbIcon({ isOpen }: { isOpen?: boolean }) {
               <feMergeNode in="SourceGraphic" />
             </feMerge>
           </filter>
+
+          {/* Ambient Warm Glass Bulb Glow */}
+          <radialGradient id="bulbAmberGlow" cx="50%" cy="38%" r="55%">
+            <stop offset="0%" stopColor="#f59e0b" stopOpacity="0.35" />
+            <stop offset="60%" stopColor="#ea580c" stopOpacity="0.14" />
+            <stop offset="100%" stopColor="#ea580c" stopOpacity="0.02" />
+          </radialGradient>
+
+          {/* Metallic Screw Base Gradient */}
+          <linearGradient id="metalScrewGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#334155" />
+            <stop offset="25%" stopColor="#94a3b8" />
+            <stop offset="50%" stopColor="#f8fafc" />
+            <stop offset="75%" stopColor="#94a3b8" />
+            <stop offset="100%" stopColor="#334155" />
+          </linearGradient>
         </defs>
 
-        {/* Ambient Warm Bulb Halo */}
-        <circle
-          cx="16"
-          cy="16"
-          r="14"
-          fill="url(#bulbAmbient)"
-          className="animate-pulse"
-          style={{ animationDuration: "3s" }}
+        {/* 1. GLASS BULB ENVELOPE (Profile of Edison bulb) */}
+        <path
+          d="M 12 32 C 8.5 27, 4 21, 4 14 C 4 6.8, 9.8 1.5, 17 1.5 C 24.2 1.5, 30 6.8, 30 14 C 30 21, 25.5 27, 22 32 Z"
+          fill="url(#bulbAmberGlow)"
+          stroke="rgba(251, 191, 36, 0.55)"
+          strokeWidth="1.2"
         />
-        <radialGradient id="bulbAmbient" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="#f59e0b" stopOpacity="0.28" />
-          <stop offset="60%" stopColor="#ea580c" stopOpacity="0.12" />
-          <stop offset="100%" stopColor="#ea580c" stopOpacity="0" />
-        </radialGradient>
 
-        {/* Vertical Central Glass/Support Stem */}
+        {/* Glass Specular Reflection Highlight on Left Shoulder */}
+        <path
+          d="M 8 7 C 6 10, 6 15, 7 18"
+          stroke="#ffffff"
+          strokeWidth="1.3"
+          strokeLinecap="round"
+          strokeOpacity="0.4"
+        />
+
+        {/* Central Vertical Support Stem */}
         <line
-          x1="16"
-          y1="6"
-          x2="16"
-          y2="26"
+          x1="17"
+          y1="7"
+          x2="17"
+          y2="28"
           stroke="#fed7aa"
           strokeWidth="0.8"
           strokeOpacity="0.45"
         />
 
-        {/* Support Brackets from Stem to Coils */}
-        <line
-          x1="16"
-          y1="10"
-          x2="11"
-          y2="10"
-          stroke="#f97316"
-          strokeWidth="0.6"
-          strokeOpacity="0.6"
-        />
-        <line
-          x1="16"
-          y1="10"
-          x2="21"
-          y2="10"
-          stroke="#f97316"
-          strokeWidth="0.6"
-          strokeOpacity="0.6"
-        />
-        <line
-          x1="16"
-          y1="16"
-          x2="11"
-          y2="16"
-          stroke="#f97316"
-          strokeWidth="0.6"
-          strokeOpacity="0.6"
-        />
-        <line
-          x1="16"
-          y1="16"
-          x2="21"
-          y2="16"
-          stroke="#f97316"
-          strokeWidth="0.6"
-          strokeOpacity="0.6"
-        />
-        <line
-          x1="16"
-          y1="22"
-          x2="11"
-          y2="22"
-          stroke="#f97316"
-          strokeWidth="0.6"
-          strokeOpacity="0.6"
-        />
-        <line
-          x1="16"
-          y1="22"
-          x2="21"
-          y2="22"
-          stroke="#f97316"
-          strokeWidth="0.6"
-          strokeOpacity="0.6"
-        />
+        {/* Support Lead Wires from Stem to Base */}
+        <path d="M 11 25 L 14 32" stroke="#f97316" strokeWidth="0.8" strokeOpacity="0.6" />
+        <path d="M 23 25 L 20 32" stroke="#f97316" strokeWidth="0.8" strokeOpacity="0.6" />
 
-        {/* 1. TOP GLOWING COILED FILAMENT LINE */}
+        {/* 2. THE 3 GLOWING COILED FILAMENT LINES (The 3-line hamburger menu) */}
+        {/* Top Coiled Line */}
         <motion.path
           animate={isOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
           transition={{ type: "spring", stiffness: 350, damping: 24 }}
-          style={{ originX: "16px", originY: "10px" }}
-          d="M 6 10 C 7.5 8.8, 8.5 11.2, 10 10 C 11.5 8.8, 12.5 11.2, 14 10 C 15.5 8.8, 16.5 11.2, 18 10 C 19.5 8.8, 20.5 11.2, 22 10 C 23.5 8.8, 24.5 11.2, 26 10"
+          style={{ originX: "17px", originY: "10px" }}
+          d="M 8 10 C 9.5 8.8, 10.5 11.2, 12 10 C 13.5 8.8, 14.5 11.2, 16 10 C 17.5 8.8, 18.5 11.2, 20 10 C 21.5 8.8, 22.5 11.2, 24 10 C 25 9.2, 25.5 10.8, 26 10"
           stroke="url(#filamentGradient)"
           strokeWidth="1.9"
           strokeLinecap="round"
           filter="url(#filamentGlow)"
         />
 
-        {/* 2. MIDDLE GLOWING COILED FILAMENT LINE */}
+        {/* Middle Coiled Line */}
         <motion.path
           animate={isOpen ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
           transition={{ duration: 0.15 }}
-          d="M 6 16 C 7.5 14.8, 8.5 17.2, 10 16 C 11.5 14.8, 12.5 17.2, 14 16 C 15.5 14.8, 16.5 17.2, 18 16 C 19.5 14.8, 20.5 17.2, 22 16 C 23.5 14.8, 24.5 17.2, 26 16"
+          d="M 8 16 C 9.5 14.8, 10.5 17.2, 12 16 C 13.5 14.8, 14.5 17.2, 16 16 C 17.5 14.8, 18.5 17.2, 20 16 C 21.5 14.8, 22.5 17.2, 24 16 C 25 15.2, 25.5 16.8, 26 16"
           stroke="url(#filamentGradient)"
           strokeWidth="1.9"
           strokeLinecap="round"
           filter="url(#filamentGlow)"
         />
 
-        {/* 3. BOTTOM GLOWING COILED FILAMENT LINE */}
+        {/* Bottom Coiled Line */}
         <motion.path
           animate={isOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
           transition={{ type: "spring", stiffness: 350, damping: 24 }}
-          style={{ originX: "16px", originY: "22px" }}
-          d="M 6 22 C 7.5 20.8, 8.5 23.2, 10 22 C 11.5 20.8, 12.5 23.2, 14 22 C 15.5 20.8, 16.5 23.2, 18 22 C 19.5 20.8, 20.5 23.2, 22 22 C 23.5 20.8, 24.5 23.2, 26 22"
+          style={{ originX: "17px", originY: "22px" }}
+          d="M 8 22 C 9.5 20.8, 10.5 23.2, 12 22 C 13.5 20.8, 14.5 23.2, 16 22 C 17.5 20.8, 18.5 23.2, 20 22 C 21.5 20.8, 22.5 23.2, 24 22 C 25 21.2, 25.5 22.8, 26 22"
           stroke="url(#filamentGradient)"
           strokeWidth="1.9"
           strokeLinecap="round"
           filter="url(#filamentGlow)"
         />
+
+        {/* 3. METALLIC BULB HOLDER / SCREW BASE SOCKET AT BOTTOM */}
+        {/* Metallic Base Collar */}
+        <rect
+          x="11.5"
+          y="32"
+          width="11"
+          height="9.5"
+          rx="1"
+          fill="url(#metalScrewGradient)"
+          stroke="#475569"
+          strokeWidth="0.8"
+        />
+
+        {/* Threaded Screw Ridges on the base */}
+        {/* Ridge 1 */}
+        <path
+          d="M 11 34.5 Q 17 35.5, 23 34.5"
+          stroke="#f8fafc"
+          strokeWidth="1.3"
+          strokeLinecap="round"
+        />
+        <path
+          d="M 11 35.2 Q 17 36.2, 23 35.2"
+          stroke="#1e293b"
+          strokeWidth="0.7"
+          strokeLinecap="round"
+        />
+
+        {/* Ridge 2 */}
+        <path
+          d="M 11 37.5 Q 17 38.5, 23 37.5"
+          stroke="#f8fafc"
+          strokeWidth="1.3"
+          strokeLinecap="round"
+        />
+        <path
+          d="M 11 38.2 Q 17 39.2, 23 38.2"
+          stroke="#1e293b"
+          strokeWidth="0.7"
+          strokeLinecap="round"
+        />
+
+        {/* Ridge 3 */}
+        <path
+          d="M 11.5 40.5 Q 17 41.5, 22.5 40.5"
+          stroke="#f8fafc"
+          strokeWidth="1.3"
+          strokeLinecap="round"
+        />
+
+        {/* Black insulator foot & bottom electrical contact */}
+        <path
+          d="M 13.5 41.5 L 14.5 44.5 H 19.5 L 20.5 41.5 Z"
+          fill="#1e293b"
+          stroke="#0f172a"
+          strokeWidth="0.5"
+        />
+        <ellipse cx="17" cy="44.5" rx="2" ry="0.8" fill="#475569" />
       </svg>
     </div>
   );
@@ -180,8 +206,7 @@ export function FilamentBulbIcon({ isOpen }: { isOpen?: boolean }) {
 /**
  * FilamentMenu:
  * Glowing 3-line incandescent bulb menu button positioned beside the top navigation bar.
- * Opens an interactive portfolio hub drawer detailing CH Madhusudhan's credentials,
- * contact options, technical skills, and quick navigation.
+ * Complete with glass bulb globe, 3 glowing filament lines, and metallic screw socket base at bottom.
  */
 export function FilamentMenu() {
   const [isOpen, setIsOpen] = useState(false);
@@ -219,21 +244,21 @@ export function FilamentMenu() {
         aria-label="Open portfolio menu"
         aria-expanded={isOpen}
         className={cn(
-          "group relative flex items-center justify-center h-11 w-11 rounded-full",
-          "bg-gradient-to-b from-stone-900 to-stone-950 text-white",
+          "group relative flex items-center justify-center h-12 w-11 rounded-2xl",
+          "bg-gradient-to-b from-stone-900 via-stone-950 to-black text-white",
           "border border-amber-500/50 hover:border-amber-400",
-          "shadow-[0_0_16px_rgba(245,158,11,0.35),0_2px_8px_rgba(0,0,0,0.5)]",
-          "hover:shadow-[0_0_26px_rgba(245,158,11,0.65),0_0_10px_rgba(255,237,213,0.8)]",
+          "shadow-[0_0_18px_rgba(245,158,11,0.38),0_2px_8px_rgba(0,0,0,0.5)]",
+          "hover:shadow-[0_0_28px_rgba(245,158,11,0.7),0_0_12px_rgba(255,237,213,0.85)]",
           "transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 shrink-0",
         )}
       >
         {/* Ambient Glow Aura Behind the Button */}
         <span
           aria-hidden="true"
-          className="absolute -inset-1 rounded-full bg-gradient-to-r from-amber-500/20 via-orange-500/25 to-yellow-400/20 blur-md opacity-75 group-hover:opacity-100 transition-opacity"
+          className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-amber-500/20 via-orange-500/25 to-yellow-400/20 blur-md opacity-75 group-hover:opacity-100 transition-opacity"
         />
 
-        {/* 3 Glowing Filament Coils Icon */}
+        {/* Edison Light Bulb Icon with Glowing 3 Filaments & Metal Socket Base */}
         <FilamentBulbIcon isOpen={isOpen} />
       </button>
 
