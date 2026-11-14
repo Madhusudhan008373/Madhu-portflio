@@ -44,8 +44,8 @@ function Index() {
         <Footer />
       </div>
 
-      {/* Floating Bottom Navigation Bar */}
-      <BottomNavBar stickyBottom />
+      {/* Floating Pill Navigation Bar (Hidden in top half of hero, smoothly slides down to top-center after 50% scroll) */}
+      <BottomNavBar position="top-center" autoHideAtTop thresholdRatio={0.5} />
     </div>
   );
 }

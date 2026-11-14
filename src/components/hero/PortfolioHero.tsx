@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ArrowUpRight, Quote } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -58,14 +58,11 @@ function MenuButton({
   );
 }
 
-function Logo({ inverted }: { inverted: boolean }) {
+function Logo() {
   return (
     <a
       href="/"
-      className={cn(
-        "flex items-center gap-2 transition-colors duration-500",
-        inverted ? "text-white" : "text-hero-foreground",
-      )}
+      className="flex items-center gap-2 text-hero-foreground transition-colors duration-500"
     >
       <span className="flex h-10 w-10 items-center justify-center rounded-full border border-current/40 text-lg type-display">
         M
@@ -75,30 +72,15 @@ function Logo({ inverted }: { inverted: boolean }) {
   );
 }
 
-/** Sticky, transparent navigation — gains a frosted backdrop only once the page scrolls. */
+/** Non-sticky navigation at top of hero — scrolls away naturally with the page content */
 function SiteNav() {
-  const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 16);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   return (
-    <header
-      className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-all duration-500",
-        scrolled
-          ? "bg-[oklch(0.08_0.02_40)]/90 border-b border-ember/20 shadow-[0_10px_30px_rgba(0,0,0,0.6)] backdrop-blur-md"
-          : "bg-transparent",
-      )}
-    >
+    <header className="absolute inset-x-0 top-0 z-30 bg-transparent">
       <div className="flex h-24 items-center justify-between lg:h-auto lg:items-stretch">
         <div className="flex items-center px-6 sm:px-10 lg:h-24 lg:w-[55%] lg:px-16 xl:px-20">
-          <Logo inverted={scrolled} />
+          <Logo />
         </div>
         <div className="flex items-center justify-end gap-8 px-6 sm:px-10 lg:mt-4 lg:h-24 lg:w-[45%] lg:px-12 xl:gap-12 xl:px-16">
           <nav aria-label="Primary" className="hidden lg:block">
@@ -107,20 +89,10 @@ function SiteNav() {
                 <li key={item}>
                   <a
                     href={`#${item.toLowerCase()}`}
-                    className={cn(
-                      "group relative type-nav transition-colors duration-300",
-                      scrolled
-                        ? "text-slate-300 hover:text-ember"
-                        : "text-foreground/75 hover:text-foreground",
-                    )}
+                    className="group relative type-nav text-foreground/75 hover:text-foreground transition-colors duration-300"
                   >
                     {item}
-                    <span
-                      className={cn(
-                        "absolute -bottom-2 left-0 h-px w-0 transition-all duration-500 group-hover:w-full",
-                        scrolled ? "bg-ember" : "bg-primary",
-                      )}
-                    />
+                    <span className="absolute -bottom-2 left-0 h-px w-0 bg-primary transition-all duration-500 group-hover:w-full" />
                   </a>
                 </li>
               ))}
@@ -293,7 +265,10 @@ export function PortfolioHero() {
   return (
     <>
       <SiteNav />
-      <main className="relative isolate flex min-h-[100dvh] flex-col overflow-hidden bg-ember-gradient lg:h-[100dvh] lg:flex-row">
+      <main
+        id="hero"
+        className="relative isolate flex min-h-[100dvh] flex-col overflow-hidden bg-ember-gradient lg:h-[100dvh] lg:flex-row"
+      >
         {/* Ambient background orbs */}
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
           <div className="orb orb-fill -left-40 -top-40 h-[36rem] w-[36rem] animate-float" />
