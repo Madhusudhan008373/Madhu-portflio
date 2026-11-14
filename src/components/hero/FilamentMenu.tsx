@@ -25,10 +25,10 @@ import { cn } from "@/lib/utils";
  */
 export function FilamentBulbIcon({ isOpen }: { isOpen?: boolean }) {
   return (
-    <div className="relative flex items-center justify-center w-[34px] h-[44px] select-none">
+    <div className="relative flex items-center justify-center w-[40px] h-[54px] select-none">
       <svg
-        width="34"
-        height="44"
+        width="40"
+        height="54"
         viewBox="0 0 34 46"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
