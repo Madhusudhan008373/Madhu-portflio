@@ -1,12 +1,36 @@
+import { useState } from "react";
+import { motion } from "framer-motion";
 import { Target, GraduationCap, Wrench, ArrowRight, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { HangingScrollBulb } from "@/components/hero/HangingScrollBulb";
 
 export function AboutSection() {
+  const [isBulbLit, setIsBulbLit] = useState(false);
+
   return (
-    <section id="about" className="relative scroll-mt-24 px-6 py-24 sm:px-10 lg:px-16 xl:px-20">
-      {/* Interactive scroll-driven hanging illuminated Edison bulb */}
-      <HangingScrollBulb />
+    <section
+      id="about"
+      className="relative scroll-mt-24 px-6 py-24 sm:px-10 lg:px-16 xl:px-20 overflow-hidden"
+    >
+      {/* Interactive scroll-driven hanging illuminated Edison pendant bulb */}
+      <HangingScrollBulb onLitChange={setIsBulbLit} />
+
+      {/* Radial Illumination Beam spreading from the newly lit top-right bulb across the dark section */}
+      <motion.div
+        animate={{
+          opacity: isBulbLit ? 1 : 0,
+          scale: isBulbLit ? 1 : 0.75,
+        }}
+        transition={{
+          duration: 1.2,
+          ease: "easeOut",
+        }}
+        className="pointer-events-none absolute -top-20 right-0 w-[650px] h-[650px] lg:w-[900px] lg:h-[900px] -z-10 rounded-full"
+        style={{
+          background:
+            "radial-gradient(circle at 82% 18%, rgba(255, 215, 0, 0.22) 0%, rgba(245, 158, 11, 0.12) 35%, rgba(234, 88, 12, 0.04) 60%, transparent 80%)",
+        }}
+      />
 
       {/* Background glow */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
@@ -14,7 +38,18 @@ export function AboutSection() {
         <div className="absolute -right-40 bottom-20 h-80 w-80 rounded-full bg-ember-mid/5 blur-[100px]" />
       </div>
 
-      <div className="relative mx-auto max-w-7xl">
+      {/* Main Section Content: Emerges smoothly out of the darkness as the bulb illuminates */}
+      <motion.div
+        animate={{
+          opacity: isBulbLit ? 1 : 0.2,
+          filter: isBulbLit ? "brightness(1) contrast(1)" : "brightness(0.65) contrast(0.85)",
+        }}
+        transition={{
+          duration: 1.1,
+          ease: [0.16, 1, 0.3, 1],
+        }}
+        className="relative mx-auto max-w-7xl transition-colors duration-1000"
+      >
         {/* Section Header */}
         <div className="max-w-3xl mb-14">
           <div className="inline-flex items-center gap-2 rounded-full border border-ember/30 bg-ember/10 px-3.5 py-1 text-xs font-semibold uppercase tracking-widest text-ember shadow-[0_0_15px_oklch(0.69_0.21_45_/_0.15)] mb-4">
@@ -195,7 +230,7 @@ export function AboutSection() {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
