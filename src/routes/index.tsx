@@ -1,20 +1,27 @@
 import { createFileRoute } from "@tanstack/react-router";
 
 import { PortfolioHero } from "@/components/hero/PortfolioHero";
+import { AboutSection } from "@/components/sections/AboutSection";
+import { EducationSection } from "@/components/sections/EducationSection";
+import { SkillsSection } from "@/components/sections/SkillsSection";
+import { StrengthsSection } from "@/components/sections/StrengthsSection";
+import { ContactSection } from "@/components/sections/ContactSection";
+import { Footer } from "@/components/layout/Footer";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Madhusudhan — UI/UX Designer Portfolio" },
+      { title: "CH Madhusudhan — Electrical & Electronics Engineering Portfolio" },
       {
         name: "description",
         content:
-          "Madhusudhan designs digital experiences that inspire and connect. Available for freelance projects.",
+          "Portfolio of CH Madhusudhan. Diploma in EEE (Pursuing) at Government Polytechnic College, Pendurthi. SSC 86%. Technical Skills: Electrical Safety, Motor Basics, PLC Basics.",
       },
-      { property: "og:title", content: "Madhusudhan — UI/UX Designer Portfolio" },
+      { property: "og:title", content: "CH Madhusudhan — EEE Student Portfolio" },
       {
         property: "og:description",
-        content: "Designs that inspire. Ideas that connect.",
+        content:
+          "Career Objective: To gain practical experience and improve my skills in the electrical field.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -24,5 +31,17 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
-  return <PortfolioHero />;
+  return (
+    <div className="relative min-h-screen bg-section-bg text-[oklch(0.985_0.012_75)] selection:bg-ember/30 selection:text-white">
+      <PortfolioHero />
+      <div className="relative z-20">
+        <AboutSection />
+        <EducationSection />
+        <SkillsSection />
+        <StrengthsSection />
+        <ContactSection />
+        <Footer />
+      </div>
+    </div>
+  );
 }

@@ -35,12 +35,22 @@
   --font-poster: "Archivo", "Bricolage Grotesque", sans-serif;
   --color-ember: var(--ember);
   --color-ember-deep: var(--ember-deep);
+  --color-ember-mid: var(--ember-mid);
+  --color-ember-soft: var(--ember-soft);
+  --color-ember-glow: var(--ember-glow);
+  --color-section-bg: var(--section-bg);
+  --color-section-card: var(--section-card);
+  --color-section-border: var(--section-border);
   --color-hero-foreground: var(--hero-foreground);
   --color-hero-muted: var(--hero-muted);
   --color-available: var(--available);
   --shadow-glow: var(--shadow-glow);
-  --shadow-soft: 0 16px 40px -16px color-mix(in oklab, var(--ember-deep) 55%, transparent), 0 2px 8px -2px color-mix(in oklab, var(--ember-deep) 20%, transparent);
-  --shadow-soft-lg: 0 24px 56px -16px color-mix(in oklab, var(--ember-deep) 65%, transparent), 0 4px 16px -4px color-mix(in oklab, var(--ember-deep) 25%, transparent);
+  --shadow-soft:
+    0 16px 40px -16px color-mix(in oklab, var(--ember-deep) 55%, transparent),
+    0 2px 8px -2px color-mix(in oklab, var(--ember-deep) 20%, transparent);
+  --shadow-soft-lg:
+    0 24px 56px -16px color-mix(in oklab, var(--ember-deep) 65%, transparent),
+    0 4px 16px -4px color-mix(in oklab, var(--ember-deep) 25%, transparent);
   --shadow-card: var(--shadow-card);
   --shadow-soft: var(--shadow-soft);
   --shadow-soft-lg: var(--shadow-soft-lg);
@@ -124,12 +134,27 @@
   /* Ember palette: #FF6A00 -> #2D0F05 */
   --ember: oklch(0.69 0.21 45);
   --ember-deep: oklch(0.2 0.05 40);
+  --ember-mid: oklch(0.58 0.19 42);
+  --ember-soft: oklch(0.69 0.21 45 / 0.15);
+  --ember-glow: oklch(0.69 0.21 45 / 0.08);
+  /* Section design tokens — warm dark palette matching the hero's ember theme */
+  --section-bg: oklch(0.1 0.025 40);
+  --section-card: oklch(0.13 0.03 42);
+  --section-border: oklch(0.69 0.21 45 / 0.2);
   --hero-foreground: oklch(0.985 0.012 75);
   --available: oklch(0.72 0.17 150);
   --hero-muted: oklch(0.985 0.012 75 / 0.78);
-  --gradient-ember: radial-gradient(120% 90% at 55% 55%, var(--ember) 0%, oklch(0.58 0.19 42) 35%, oklch(0.36 0.12 38) 70%, var(--ember-deep) 100%);
+  --gradient-ember: radial-gradient(
+    120% 90% at 55% 55%,
+    var(--ember) 0%,
+    oklch(0.58 0.19 42) 35%,
+    oklch(0.36 0.12 38) 70%,
+    var(--ember-deep) 100%
+  );
   --shadow-glow: 0 18px 40px -12px color-mix(in oklab, var(--ember-deep) 70%, transparent);
-  --shadow-card: 0 30px 60px -30px color-mix(in oklab, var(--foreground) 35%, transparent), 0 2px 6px -2px color-mix(in oklab, var(--foreground) 8%, transparent);
+  --shadow-card:
+    0 30px 60px -30px color-mix(in oklab, var(--foreground) 35%, transparent),
+    0 2px 6px -2px color-mix(in oklab, var(--foreground) 8%, transparent);
 }
 
 .dark {
@@ -168,12 +193,16 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   * {
     border-color: var(--color-border);
   }
 
   body {
-    background-color: var(--color-background);
+    background-color: var(--section-bg);
     color: var(--color-foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
@@ -191,7 +220,11 @@
 }
 
 @utility orb-fill {
-  background: radial-gradient(circle at 30% 30%, color-mix(in oklab, var(--hero-foreground) 22%, transparent), transparent 70%);
+  background: radial-gradient(
+    circle at 30% 30%,
+    color-mix(in oklab, var(--hero-foreground) 22%, transparent),
+    transparent 70%
+  );
 }
 
 @utility orb-ring {
@@ -199,7 +232,11 @@
 }
 
 @utility orb-glow {
-  background: radial-gradient(circle, color-mix(in oklab, var(--ember) 80%, transparent), transparent 65%);
+  background: radial-gradient(
+    circle,
+    color-mix(in oklab, var(--ember) 80%, transparent),
+    transparent 65%
+  );
   filter: blur(40px);
 }
 
@@ -223,7 +260,11 @@
 }
 
 @utility portrait-glow {
-  background: radial-gradient(closest-side, color-mix(in oklab, var(--ember) 55%, transparent), transparent);
+  background: radial-gradient(
+    closest-side,
+    color-mix(in oklab, var(--ember) 55%, transparent),
+    transparent
+  );
   filter: blur(30px);
 }
 
@@ -247,21 +288,102 @@
   animation: ping-soft 2s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
 
+/* ─── Section design helpers ─────────────────────────────────────── */
+
+@utility section-card {
+  background-color: var(--section-card);
+  border: 1px solid var(--section-border);
+  border-radius: 1.5rem;
+  transition:
+    border-color 300ms,
+    transform 300ms,
+    box-shadow 300ms;
+}
+
+@utility section-card-hover {
+  border-color: oklch(0.69 0.21 45 / 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 20px 50px -10px oklch(0.69 0.21 45 / 0.2);
+}
+
+@utility section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  border: 1px solid oklch(0.69 0.21 45 / 0.35);
+  background-color: oklch(0.69 0.21 45 / 0.12);
+  padding: 0.25rem 0.875rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: oklch(0.85 0.12 50);
+}
+
+@utility ember-text {
+  color: oklch(0.78 0.16 50);
+}
+
+@utility ember-glow-border {
+  border-color: oklch(0.69 0.21 45 / 0.4);
+  box-shadow: 0 0 20px oklch(0.69 0.21 45 / 0.15);
+}
+
+/* Scroll-triggered reveal */
+@utility animate-reveal {
+  animation: reveal 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @keyframes float {
-  0%, 100% { transform: translate3d(0, 0, 0); }
-  50% { transform: translate3d(18px, -24px, 0); }
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(18px, -24px, 0);
+  }
 }
 
 @keyframes rise {
-  from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes ping-soft {
-  0% { transform: scale(1); opacity: 0.6; }
-  80%, 100% { transform: scale(2.6); opacity: 0; }
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  80%,
+  100% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .animate-float, .animate-float-slow, .animate-rise, .animate-ping-soft { animation: none; }
+  .animate-float,
+  .animate-float-slow,
+  .animate-rise,
+  .animate-ping-soft {
+    animation: none;
+  }
 }
