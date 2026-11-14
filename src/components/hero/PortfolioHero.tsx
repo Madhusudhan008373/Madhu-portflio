@@ -8,6 +8,7 @@ import client2 from "@/assets/client-2.jpg";
 import client3 from "@/assets/client-3.jpg";
 import client4 from "@/assets/client-4.jpg";
 import portrait from "@/assets/portrait.webp";
+import circuitGraphic from "@/assets/circuit.png";
 
 /*
  * Spacing follows an 8-point grid: only Tailwind steps that resolve to multiples of 8px
@@ -214,14 +215,27 @@ function Portrait() {
 
 function WhitePanel() {
   return (
-    <section className="relative flex flex-col rounded-t-[3rem] bg-background px-6 pb-8 pt-16 sm:px-10 lg:mt-4 lg:h-[calc(100dvh-1rem)] lg:w-[45%] lg:rounded-tl-[3rem] lg:rounded-tr-none lg:px-12 lg:pb-16 lg:pt-28 xl:px-16">
+    <section className="relative flex flex-col overflow-hidden rounded-t-[3rem] bg-background px-6 pb-8 pt-16 sm:px-10 lg:mt-4 lg:h-[calc(100dvh-1rem)] lg:w-[45%] lg:rounded-tl-[3rem] lg:rounded-tr-none lg:px-12 lg:pb-16 lg:pt-28 xl:px-16">
+      {/* Circuit Graphic (Layered behind foreground card and beside portrait) */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-0 flex items-center justify-start overflow-hidden select-none"
+      >
+        <img
+          src={circuitGraphic}
+          alt=""
+          loading="eager"
+          className="h-full w-full object-contain object-left-center opacity-85 mix-blend-multiply transition-opacity duration-500 scale-110 -translate-x-6 lg:-translate-x-10"
+        />
+      </div>
+
       <div className="relative z-20 flex flex-1 flex-col justify-center pb-16 lg:items-end lg:pb-0"></div>
 
-      <div className="mb-10 lg:hidden">
+      <div className="mb-10 lg:hidden relative z-20">
         <ClientAvatarsLight />
       </div>
 
-      <figure className="relative z-20 w-full animate-rise rounded-3xl bg-muted p-6 shadow-card [animation-delay:560ms] sm:max-w-xs sm:p-8 lg:ml-auto">
+      <figure className="relative z-20 w-full animate-rise rounded-3xl bg-muted/95 backdrop-blur-md p-6 shadow-card [animation-delay:560ms] sm:max-w-xs sm:p-8 lg:ml-auto border border-foreground/5">
         <Quote className="h-7 w-7 fill-primary text-primary" />
         <blockquote className="mt-3 text-sm font-medium leading-relaxed text-foreground">
           "To gain practical experience and improve my skills in the electrical field."
