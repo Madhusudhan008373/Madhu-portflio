@@ -43,9 +43,9 @@ function SiteNav() {
         <div className="flex items-center px-6 sm:px-10 lg:h-24 lg:w-[55%] lg:px-16 xl:px-20">
           <Logo />
         </div>
-        <div className="flex items-center justify-end gap-6 sm:gap-8 px-6 sm:px-10 lg:mt-4 lg:h-24 lg:w-[45%] lg:px-12 xl:gap-8 xl:px-16">
-          <nav aria-label="Primary" className="hidden lg:block">
-            <ul className="flex items-center gap-6 xl:gap-8">
+        <div className="flex items-center justify-end gap-6 sm:gap-8 px-4 sm:px-6 lg:mt-4 lg:h-24 lg:w-[45%] lg:pl-6 lg:pr-6 xl:pr-8">
+          <nav aria-label="Primary" className="hidden lg:block mr-4 xl:mr-6">
+            <ul className="flex items-center gap-5 xl:gap-8">
               {navItems.map((item) => (
                 <li key={item}>
                   <a
@@ -60,8 +60,10 @@ function SiteNav() {
             </ul>
           </nav>
 
-          {/* Glowing 3-Line Incandescent Filament Bulb Menu */}
-          <FilamentMenu />
+          {/* Glowing Edison Bulb Menu pinned to the far top-right corner */}
+          <div className="flex items-center">
+            <FilamentMenu />
+          </div>
         </div>
       </div>
     </header>

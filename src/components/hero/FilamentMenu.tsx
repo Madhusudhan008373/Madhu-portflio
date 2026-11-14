@@ -76,8 +76,8 @@ export function FilamentBulbIcon({ isOpen }: { isOpen?: boolean }) {
         <path
           d="M 12 32 C 8.5 27, 4 21, 4 14 C 4 6.8, 9.8 1.5, 17 1.5 C 24.2 1.5, 30 6.8, 30 14 C 30 21, 25.5 27, 22 32 Z"
           fill="url(#bulbAmberGlow)"
-          stroke="rgba(251, 191, 36, 0.55)"
-          strokeWidth="1.2"
+          stroke="rgba(217, 119, 6, 0.65)"
+          strokeWidth="1.3"
         />
 
         {/* Glass Specular Reflection Highlight on Left Shoulder */}
@@ -86,7 +86,7 @@ export function FilamentBulbIcon({ isOpen }: { isOpen?: boolean }) {
           stroke="#ffffff"
           strokeWidth="1.3"
           strokeLinecap="round"
-          strokeOpacity="0.4"
+          strokeOpacity="0.45"
         />
 
         {/* Central Vertical Support Stem */}
@@ -95,26 +95,25 @@ export function FilamentBulbIcon({ isOpen }: { isOpen?: boolean }) {
           y1="7"
           x2="17"
           y2="28"
-          stroke="#fed7aa"
-          strokeWidth="0.8"
-          strokeOpacity="0.45"
+          stroke="#334155"
+          strokeWidth="0.9"
+          strokeOpacity="0.55"
         />
 
         {/* Support Lead Wires from Stem to Base */}
-        <path d="M 11 25 L 14 32" stroke="#f97316" strokeWidth="0.8" strokeOpacity="0.6" />
-        <path d="M 23 25 L 20 32" stroke="#f97316" strokeWidth="0.8" strokeOpacity="0.6" />
+        <path d="M 11 25 L 14 32" stroke="#1e293b" strokeWidth="0.9" strokeOpacity="0.7" />
+        <path d="M 23 25 L 20 32" stroke="#1e293b" strokeWidth="0.9" strokeOpacity="0.7" />
 
-        {/* 2. THE 3 GLOWING COILED FILAMENT LINES (The 3-line hamburger menu) */}
+        {/* 2. THE 3 SOLID BLACK FILAMENT LINES (High-contrast 3-line hamburger menu) */}
         {/* Top Coiled Line */}
         <motion.path
           animate={isOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
           transition={{ type: "spring", stiffness: 350, damping: 24 }}
           style={{ originX: "17px", originY: "10px" }}
           d="M 8 10 C 9.5 8.8, 10.5 11.2, 12 10 C 13.5 8.8, 14.5 11.2, 16 10 C 17.5 8.8, 18.5 11.2, 20 10 C 21.5 8.8, 22.5 11.2, 24 10 C 25 9.2, 25.5 10.8, 26 10"
-          stroke="url(#filamentGradient)"
-          strokeWidth="1.9"
+          stroke="#000000"
+          strokeWidth="2.2"
           strokeLinecap="round"
-          filter="url(#filamentGlow)"
         />
 
         {/* Middle Coiled Line */}
@@ -122,10 +121,9 @@ export function FilamentBulbIcon({ isOpen }: { isOpen?: boolean }) {
           animate={isOpen ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
           transition={{ duration: 0.15 }}
           d="M 8 16 C 9.5 14.8, 10.5 17.2, 12 16 C 13.5 14.8, 14.5 17.2, 16 16 C 17.5 14.8, 18.5 17.2, 20 16 C 21.5 14.8, 22.5 17.2, 24 16 C 25 15.2, 25.5 16.8, 26 16"
-          stroke="url(#filamentGradient)"
-          strokeWidth="1.9"
+          stroke="#000000"
+          strokeWidth="2.2"
           strokeLinecap="round"
-          filter="url(#filamentGlow)"
         />
 
         {/* Bottom Coiled Line */}
@@ -134,10 +132,9 @@ export function FilamentBulbIcon({ isOpen }: { isOpen?: boolean }) {
           transition={{ type: "spring", stiffness: 350, damping: 24 }}
           style={{ originX: "17px", originY: "22px" }}
           d="M 8 22 C 9.5 20.8, 10.5 23.2, 12 22 C 13.5 20.8, 14.5 23.2, 16 22 C 17.5 20.8, 18.5 23.2, 20 22 C 21.5 20.8, 22.5 23.2, 24 22 C 25 21.2, 25.5 22.8, 26 22"
-          stroke="url(#filamentGradient)"
-          strokeWidth="1.9"
+          stroke="#000000"
+          strokeWidth="2.2"
           strokeLinecap="round"
-          filter="url(#filamentGlow)"
         />
 
         {/* 3. METALLIC BULB HOLDER / SCREW BASE SOCKET AT BOTTOM */}
