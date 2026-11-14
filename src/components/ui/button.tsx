@@ -16,7 +16,7 @@ const buttonVariants = cva(
         secondary: "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        hero: "group rounded-full bg-hero-foreground text-ember-deep shadow-glow hover:bg-background hover:-translate-y-0.5 transition-all duration-300",
+        hero: "group rounded-full bg-hero-foreground text-ember-deep shadow-soft hover:bg-background hover:-translate-y-1 hover:shadow-soft-lg active:translate-y-0 transition-all duration-500 ease-out",
         menu: "group rounded-full bg-muted text-foreground shadow-sm hover:bg-primary hover:text-primary-foreground hover:scale-105 transition-all duration-300",
       },
       size: {
@@ -24,7 +24,7 @@ const buttonVariants = cva(
         sm: "h-8 rounded-md px-3 text-xs",
         lg: "h-10 rounded-md px-8",
         icon: "h-9 w-9",
-        pill: "h-16 px-9 text-base font-bold uppercase tracking-wider",
+        pill: "h-16 gap-4 pl-8 pr-2 text-sm font-bold uppercase tracking-[0.16em]",
         circle: "h-14 w-14 shrink-0 [&_svg]:size-5",
       },
     },
