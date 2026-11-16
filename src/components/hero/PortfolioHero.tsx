@@ -11,7 +11,6 @@ import client3 from "@/assets/client-3.jpg";
 import client4 from "@/assets/client-4.jpg";
 import portrait from "@/assets/portrait.webp";
 import circuitGraphic from "@/assets/circuit.png";
-import roverGraphic from "@/assets/rover.png";
 import { FilamentMenu } from "./FilamentMenu";
 
 /*
@@ -179,23 +178,7 @@ function WhitePanel() {
         />
       </motion.div>
 
-      {/* Engineering Machine Rover Sketch Artwork (1st Page Right Side - Transparent Background & Decreased Contrast) */}
-      <div className="relative z-20 flex flex-1 items-center justify-center lg:justify-end my-2 lg:my-0">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.94, y: 12 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.35, ease: "easeOut" }}
-          className="relative group w-full max-w-[260px] sm:max-w-[300px] lg:max-w-[330px] xl:max-w-[370px] select-none"
-        >
-          <img
-            src={roverGraphic}
-            alt="Robotic exploration rover machine engineering blueprint sketch"
-            width={928}
-            height={970}
-            className="w-full h-auto object-contain opacity-75 contrast-[0.85] brightness-[1.04] transition-all duration-500 group-hover:opacity-95 group-hover:scale-[1.03]"
-          />
-        </motion.div>
-      </div>
+      <div className="relative z-20 flex flex-1 flex-col justify-center pb-16 lg:items-end lg:pb-0"></div>
 
       <div className="mb-10 lg:hidden relative z-20">
         <ClientAvatarsLight />
