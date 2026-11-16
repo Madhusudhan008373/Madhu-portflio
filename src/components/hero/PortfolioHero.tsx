@@ -50,6 +50,12 @@ function SiteNav() {
                 <li key={item}>
                   <a
                     href={`#${item.toLowerCase()}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      document
+                        .getElementById(item.toLowerCase())
+                        ?.scrollIntoView({ behavior: "smooth" });
+                    }}
                     className="group relative type-nav text-foreground/75 hover:text-foreground transition-colors duration-300"
                   >
                     {item}
@@ -87,7 +93,13 @@ function EmberPanel() {
         </p>
         <div className="mt-10 animate-rise [animation-delay:320ms]">
           <Button variant="hero" size="pill" asChild>
-            <a href="#about">
+            <a
+              href="#about"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
+              }}
+            >
               Explore Profile
               <span className="flex h-12 w-12 items-center justify-center rounded-full bg-ember-deep text-hero-foreground transition-transform duration-500 ease-out group-hover:rotate-45">
                 <ArrowUpRight />

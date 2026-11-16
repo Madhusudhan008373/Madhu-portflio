@@ -180,8 +180,6 @@ export function BottomNavBar({
         if (el) {
           el.scrollIntoView({ behavior: "smooth" });
         }
-        // Update browser URL hash without causing full router re-mounting
-        window.history.pushState(null, "", item.href);
       } else {
         window.location.href = item.href;
       }

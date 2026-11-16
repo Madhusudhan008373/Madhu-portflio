@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 
 import { PortfolioHero } from "@/components/hero/PortfolioHero";
@@ -32,6 +33,35 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      if ("scrollRestoration" in window.history) {
+        window.history.scrollRestoration = "manual";
+      }
+
+      // Immediately reset scroll to 1st hero page
+      window.scrollTo(0, 0);
+
+      // Clean up lingering URL hash from address bar
+      if (window.location.hash) {
+        window.history.replaceState(null, "", window.location.pathname);
+      }
+
+      // Safeguard against any delayed browser layout scroll restorations
+      const raf = requestAnimationFrame(() => {
+        window.scrollTo(0, 0);
+      });
+      const timer = setTimeout(() => {
+        window.scrollTo(0, 0);
+      }, 30);
+
+      return () => {
+        cancelAnimationFrame(raf);
+        clearTimeout(timer);
+      };
+    }
+  }, []);
+
   return (
     <div className="relative min-h-screen bg-section-bg text-[oklch(0.985_0.012_75)] selection:bg-ember/30 selection:text-white">
       <PortfolioHero />
